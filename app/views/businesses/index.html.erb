@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Businesses</h1>
+
+<% @businesses.each do |business| %>
+    <h2><%= business.name %></h2>
+    <p><%= business.body %></p>
+    <p><%= business.rating %></p>
+    <p><%= link_to 'Show', business %>,
+    <%= link_to 'Edit', edit_business_path(business) %>
+    <%= link_to 'Delete', business, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+<br>
+
+<%= link_to 'New Business', new_business_path %>
