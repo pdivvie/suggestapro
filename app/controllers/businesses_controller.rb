@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
+  layout "business"
 
   # GET /businesses
   # GET /businesses.json

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @page_title %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="keywords" content="<%= @seo_keywords %>" />
+
+    <%= stylesheet_link_tag    'businesses', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div><%= link_to "Home", root_path %></div>
+    <div><%= link_to "Businesses", businesses_path %></div>
+
+    <p><%= login_helper "nav-link" %></p>
+
+    <%= yield %>
+  </body>
+</html>
