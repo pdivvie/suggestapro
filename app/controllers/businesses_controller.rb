@@ -10,6 +10,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/1
   # GET /businesses/1.json
   def show
+    @page_title = @business.name
   end
 
   # GET /businesses/new
