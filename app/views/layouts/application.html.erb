@@ -15,8 +15,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <div><%= link_to "Home", root_path %></div>
-    <div><%= link_to "Businesses", businesses_path %></div>
+    <%= render "shared/nav" %>
 
     <p><%= login_helper "nav-link" %></p>
 
