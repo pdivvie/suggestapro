@@ -2,7 +2,7 @@
 
 <h1>Businesses</h1>
 
-<%= login_helper "nav-link" %>
+<p><%= link_to 'New Business', new_business_path %></p>
 
 <% @businesses.each do |business| %>
     <h2><%= business.name %></h2>
@@ -13,6 +13,3 @@
     <%= link_to 'Delete', business, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 
-<br>
-
-<%= link_to 'New Business', new_business_path %>
