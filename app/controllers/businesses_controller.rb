@@ -2,6 +2,8 @@ class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   layout "business"
 
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update]}, business_user: :all, site_admin: :all
+
   # GET /businesses
   # GET /businesses.json
   def index
@@ -27,6 +29,7 @@ class BusinessesController < ApplicationController
   # POST /businesses.json
   def create
     @business = Business.new(business_params)
+    @business.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @business.save
@@ -56,11 +59,11 @@ class BusinessesController < ApplicationController
   # DELETE /businesses/1
   # DELETE /businesses/1.json
   def destroy
-    @business.destroy
-    respond_to do |format|
-      format.html { redirect_to businesses_url, notice: 'Business was successfully deleted.' }
-      format.json { head :no_content }
+    @business = Business.friendly.find(params[:id])
+    if current_user == @business.user || current_user.role == :site_admin
+        @business.destroy
     end
+    redirect_to businesses_path
   end
 
   private
