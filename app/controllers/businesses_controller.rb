@@ -61,9 +61,16 @@ class BusinessesController < ApplicationController
   def destroy
     @business = Business.friendly.find(params[:id])
     if current_user == @business.user || current_user.role == :site_admin
-        @business.destroy
+      @business.destroy
+
+      respond_to do |format|
+        format.html { redirect_to businesses_path, notice: 'Record was removed.' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to businesses_path, notice: 'Record could not be removed.' }
+      end
     end
-    redirect_to businesses_path
   end
 
   private
