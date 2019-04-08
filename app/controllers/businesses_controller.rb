@@ -2,7 +2,7 @@ class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   layout "business"
 
-  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update]}, business_user: :all, site_admin: :all
+  access all: [:show, :index], user: :all, site_admin: :all
 
   # GET /businesses
   # GET /businesses.json
