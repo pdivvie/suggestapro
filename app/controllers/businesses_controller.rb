@@ -34,10 +34,8 @@ class BusinessesController < ApplicationController
     respond_to do |format|
       if @business.save
         format.html { redirect_to @business, notice: 'Business was successfully created.' }
-        format.json { render :show, status: :created, location: @business }
       else
         format.html { render :new }
-        format.json { render json: @business.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -45,13 +43,16 @@ class BusinessesController < ApplicationController
   # PATCH/PUT /businesses/1
   # PATCH/PUT /businesses/1.json
   def update
-    respond_to do |format|
-      if @business.update(business_params)
-        format.html { redirect_to @business, notice: 'Business was successfully updated.' }
-        format.json { render :show, status: :ok, location: @business }
-      else
-        format.html { render :edit }
-        format.json { render json: @business.errors, status: :unprocessable_entity }
+    @business = Business.friendly.find(params[:id])
+    if current_user == @business.user || current_user.role == :site_admin
+      respond_to do |format|
+        if @business.update(business_params)
+          format.html { redirect_to @business, notice: 'Business was successfully updated.' }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @business, notice: 'You do not have authorization to complete this action' }
       end
     end
   end
@@ -74,13 +75,13 @@ class BusinessesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_business
-      @business = Business.friendly.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_business
+    @business = Business.friendly.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def business_params
-      params.require(:business).permit(:name, :body, :main_image)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def business_params
+    params.require(:business).permit(:name, :body, :main_image)
+  end
 end
