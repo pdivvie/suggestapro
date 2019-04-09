@@ -6,12 +6,14 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all
+    authorize @businesses
   end
 
   # GET /businesses/1
   # GET /businesses/1.json
   def show
     @page_title = @business.name
+    authorize @business
   end
 
   # GET /businesses/new
@@ -27,6 +29,7 @@ class BusinessesController < ApplicationController
   # POST /businesses.json
   def create
     @business = Business.new(business_params)
+    @business.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @business.save
@@ -44,7 +47,7 @@ class BusinessesController < ApplicationController
   def update
     @business = Business.friendly.find(params[:id])
     authorize @business
-    if @business.update(post_params)
+    if @business.update(business_params)
       redirect_to @business
     else
       render :edit
@@ -54,6 +57,8 @@ class BusinessesController < ApplicationController
   # DELETE /businesses/1
   # DELETE /businesses/1.json
   def destroy
+    @business = Business.friendly.find(params[:id])
+    authorize @business
     @business.destroy
     respond_to do |format|
       format.html { redirect_to businesses_url, notice: 'Business was successfully deleted.' }

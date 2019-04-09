@@ -7,6 +7,10 @@ class BusinessPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    (business.user == user) || (user.has_role? :admin)
+  end
+
+  def destroy?
+    (business.user == user) || (user.has_role? :admin)
   end
 end
