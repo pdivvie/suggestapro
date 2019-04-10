@@ -6,12 +6,14 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all
+    authorize @businesses
   end
 
   # GET /businesses/1
   # GET /businesses/1.json
   def show
     @page_title = @business.name
+    authorize @business
   end
 
   # GET /businesses/new
@@ -27,6 +29,7 @@ class BusinessesController < ApplicationController
   # POST /businesses.json
   def create
     @business = Business.new(business_params)
+    @business.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @business.save
@@ -42,20 +45,20 @@ class BusinessesController < ApplicationController
   # PATCH/PUT /businesses/1
   # PATCH/PUT /businesses/1.json
   def update
-    respond_to do |format|
-      if @business.update(business_params)
-        format.html { redirect_to @business, notice: 'Business was successfully updated.' }
-        format.json { render :show, status: :ok, location: @business }
-      else
-        format.html { render :edit }
-        format.json { render json: @business.errors, status: :unprocessable_entity }
-      end
+    @business = Business.friendly.find(params[:id])
+    authorize @business
+    if @business.update(business_params)
+      redirect_to @business
+    else
+      render :edit
     end
   end
 
   # DELETE /businesses/1
   # DELETE /businesses/1.json
   def destroy
+    @business = Business.friendly.find(params[:id])
+    authorize @business
     @business.destroy
     respond_to do |format|
       format.html { redirect_to businesses_url, notice: 'Business was successfully deleted.' }
