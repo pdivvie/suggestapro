@@ -17,7 +17,17 @@
 
 <p>
   <strong>Rating:</strong>
-  <%= @business.rating %>
+  <% @business.rating.times do %>
+    <span style="color: Goldenrod;">
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </span>
+  <% end %>
+
+  <% @business.blank_stars.times do %>
+    <span style="color: Goldenrod;">
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+    </span>
+  <% end %>
 </p>
 
 <% if policy(@business).update? %>

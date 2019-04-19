@@ -1,4 +1,16 @@
 <h2><%= business.name.upcase %></h2>
 <p><%= business.body %></p>
-<p><%= business.rating %></p>
+<p>
+  <% business.rating.times do %>
+    <span style="color: Goldenrod;">
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </span>
+  <% end %>
+
+  <% business.blank_stars.times do %>
+    <span style="color: Goldenrod;">
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+    </span>
+  <% end %>
+</p>
 <p><%= link_to 'Show', business %>
