@@ -1,16 +1,30 @@
-<h2><%= business.name.upcase %></h2>
-<p><%= business.body %></p>
-<p>
-  <% business.rating.times do %>
-    <span style="color: Goldenrod;">
-      <i class="fa fa-star" aria-hidden="true"></i>
-    </span>
-  <% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
 
-  <% business.blank_stars.times do %>
-    <span style="color: Goldenrod;">
-      <i class="fa fa-star-o" aria-hidden="true"></i>
-    </span>
-  <% end %>
-</p>
-<p><%= link_to 'Show', business %>
+<% @businesses.each do |business| %>
+  <tr>
+    <td><%= business.name %></td>
+    <td>
+      <ul class="rating">
+        <% form_id = "business_#{business.id}_rating" %>
+        <%= form_for business.ratings.last || business.ratings.build, :html => {:id => "business_#{business.id}_rating", :class => "star_rating_form"} do |f| %>
+          <%= f.hidden_field :business_id %>
+          <%= f.hidden_field :stars, :id => "#{form_id}_stars" %>
+        <% end %>
+        <% (1..5).each do |i| %>
+          <li class="rating_star" data-stars="<%= i %>" data-form-id="<%= form_id %>" id="<%= "#{form_id}_#{i}" %>"></li>
+        <% end %>
+      </ul>
+    </td>
+    <td><%= link_to 'Show', business %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>
