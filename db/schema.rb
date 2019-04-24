@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_113817) do
+ActiveRecord::Schema.define(version: 2019_04_23_134624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,9 @@ ActiveRecord::Schema.define(version: 2019_04_23_113817) do
     t.integer "stars"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["business_id"], name: "index_ratings_on_business_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -80,4 +82,5 @@ ActiveRecord::Schema.define(version: 2019_04_23_113817) do
   end
 
   add_foreign_key "businesses", "users"
+  add_foreign_key "ratings", "users"
 end
