@@ -10,6 +10,9 @@
   <%= @business.body %>
 </p>
 
+<div class="star-rating" data-score="<%= @avg_rating %>"></div>
+<em><%="#{@ratings.length} reviews" %></em>
+
 <p>
   <strong>Main image:</strong>
   <%= image_tag @business.main_image %>
@@ -22,7 +25,7 @@
   <% @ratings.each do |rating| %>
     <div class="reviews">
       <div class="star-rating" data-score="<%= rating.stars %>"></div>
-      <%= link_to 'Edit review', edit_business_rating_path(@business, rating) %>
+      <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating) %></p>
     </div>
   <% end %>
 <% end %>

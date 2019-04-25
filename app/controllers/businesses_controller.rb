@@ -14,6 +14,13 @@ class BusinessesController < ApplicationController
   def show
     @page_title = @business.name
     @ratings = Rating.where(business_id: @business.id).order("created_at DESC")
+
+    if @ratings.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @ratings.average(:stars).round(2)
+    end
+
     authorize @business
   end
 
