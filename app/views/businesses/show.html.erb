@@ -22,6 +22,7 @@
   <% @ratings.each do |rating| %>
     <div class="reviews">
       <div class="star-rating" data-score="<%= rating.stars %>"></div>
+      <%= link_to 'Edit review', edit_business_rating_path(@business, rating) %>
     </div>
   <% end %>
 <% end %>
