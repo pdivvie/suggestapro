@@ -16,8 +16,8 @@
       <tr>
         <td><%= rating.stars %></td>
         <td><%= rating.business_id %></td>
-        <td><%= link_to 'Show', rating %></td>
-        <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+        <td><%= link_to 'Show', business_rating_path %></td>
+        <td><%= link_to 'Edit', edit_business_rating_path(rating) %></td>
         <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Rating', new_rating_path %>
+<%= link_to 'New Rating', new_business_rating_path %>

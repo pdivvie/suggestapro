@@ -13,6 +13,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/1.json
   def show
     @page_title = @business.name
+    @ratings = Rating.where(business_id: @business.id).order("created_at DESC")
     authorize @business
   end
 

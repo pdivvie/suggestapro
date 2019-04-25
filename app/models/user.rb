@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   rolify
   has_many :businesses
+  has_many :ratings, dependent: :destroy
 
   after_create :assign_default_role
 
