@@ -13,6 +13,14 @@ class BusinessesController < ApplicationController
   # GET /businesses/1.json
   def show
     @page_title = @business.name
+    @ratings = Rating.where(business_id: @business.id).order("created_at DESC")
+
+    if @ratings.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @ratings.average(:stars).round(2)
+    end
+
     authorize @business
   end
 
@@ -45,7 +53,7 @@ class BusinessesController < ApplicationController
   # PATCH/PUT /businesses/1
   # PATCH/PUT /businesses/1.json
   def update
-    @business = Business.friendly.find(params[:id])
+    @business = Business.find(params[:id])
     authorize @business
     if @business.update(business_params)
       redirect_to @business
@@ -57,7 +65,7 @@ class BusinessesController < ApplicationController
   # DELETE /businesses/1
   # DELETE /businesses/1.json
   def destroy
-    @business = Business.friendly.find(params[:id])
+    @business = Business.find(params[:id])
     authorize @business
     @business.destroy
     respond_to do |format|
@@ -69,7 +77,7 @@ class BusinessesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_business
-      @business = Business.friendly.find(params[:id])
+      @business = Business.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

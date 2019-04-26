@@ -1,0 +1,30 @@
+<%= form_for ([@business, @rating]) do |form| %>
+  <% if rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+
+      <ul>
+      <% rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id="star-rating"></div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function(e) {
+    $('#star-rating').raty({
+      path: '/assets/',
+      scoreName: 'rating[stars]'
+    });
+  });
+</script>

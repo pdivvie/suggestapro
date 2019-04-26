@@ -1,4 +1,17 @@
-<h2><%= business.name.upcase %></h2>
-<p><%= business.body %></p>
-<p><%= business.rating %></p>
-<p><%= link_to 'Show', business %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+
+<tr>
+  <td><%= business.name %></td>
+
+  <td><%= link_to 'Show', business %></td>
+</tr>
+</table>
+
+<br>

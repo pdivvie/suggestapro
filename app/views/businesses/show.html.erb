@@ -10,15 +10,26 @@
   <%= @business.body %>
 </p>
 
+<div class="star-rating" data-score="<%= @avg_rating %>"></div>
+<em><%="#{@ratings.length} reviews" %></em>
+
 <p>
   <strong>Main image:</strong>
   <%= image_tag @business.main_image %>
 </p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @business.rating %>
-</p>
+<% if @ratings.blank? %>
+  <h3>No reviews yet, would you like to write the first?</h3>
+  <%= link_to 'Write a Review', new_business_rating_path(@business) %> 
+<% else %>
+  <% @ratings.each do |rating| %>
+    <div class="reviews">
+      <div class="star-rating" data-score="<%= rating.stars %>"></div>
+      <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating) %></p>
+    </div>
+  <% end %>
+<% end %>
+
 
 <% if policy(@business).update? %>
   <%= link_to 'Edit', edit_business_path(@business) %> |
@@ -26,4 +37,18 @@
 <% if policy(@business).destroy? %>
   <%= link_to 'Delete', @business, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
-<%= link_to 'Back', businesses_path %>
+<%= link_to 'Back', businesses_path %> |
+<%= link_to 'Write a Review', new_business_rating_path(@business) %> 
+
+
+<script>
+  $(document).ready(function(e) {  
+    $('.star-rating').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  });
+</script>
