@@ -15,6 +15,11 @@
     <div id="star-rating"></div>
   </div>
 
+  <div class="field">
+    <%= form.label :comment %><br />
+    <%= form.text_area :comment, autocomplete: "Write your review..." %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
