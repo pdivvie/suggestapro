@@ -1,38 +1,40 @@
 <main role="main" class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="bg-dark">
+  <div class="dark-theme">
+    <div class="row">
+      <div class="col-md-6">
         <h1><%= @business.name %></h1>
-      </div>
-      <p><%= image_tag @business.main_image, size: "480x360" %></p>
-      <p><div class="star-rating-show" data-score="<%= @avg_rating %>"></div>
-        <em><%="#{@ratings.length} reviews" %></em></p>
-      <p><%= @business.body %></p>
-    </div>
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-5">
-      <% if @ratings.blank? %>
-        <h3>No reviews yet, would you like to write the first?</h3>
-        <%= link_to 'Write a Review', new_business_rating_path(@business) %> 
-      <% else %>
-        <% @ratings.each do |rating| %>
-          <div class="reviews">
-            <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
-            <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating) %></p>
+        <p><%= image_tag @business.main_image, size: "480x360" %></p>
+        <p><div class="star-rating-show" data-score="<%= @avg_rating %>"></div>
+          <em><%="#{@ratings.length} reviews" %></em></p>
+          <div class="dark-theme">
+            <p><%= @business.body %></p>
           </div>
+      </div>
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-5">
+        <% if @ratings.blank? %>
+          <h3>No reviews yet, would you like to write the first?</h3>
+          <%= link_to 'Write a Review', new_business_rating_path(@business),class: "dark-theme" %> 
+        <% else %>
+          <% @ratings.each do |rating| %>
+            <div class="reviews">
+              <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
+              <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating),class: "dark-theme" %></p>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
   <% if policy(@business).update? %>
-    <%= link_to 'Edit', edit_business_path(@business) %> |
+    <%= link_to 'Edit', edit_business_path(@business),class: "dark-theme" %> |
   <% end %>
   <% if policy(@business).destroy? %>
-    <%= link_to 'Delete', @business, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Delete', @business,class: "dark-theme", method: :delete, data: { confirm: 'Are you sure?' } %> |
   <% end %>
-  <%= link_to 'Back', businesses_path %> |
-  <%= link_to 'Write a Review', new_business_rating_path(@business) %>
+  <%= link_to 'Back', businesses_path,class: "dark-theme" %> |
+  <%= link_to 'Write a Review', new_business_rating_path(@business),class: "dark-theme" %>
 </main>
 
  
