@@ -8,7 +8,7 @@
 
 1.times do
   User.create!(
-    username: "pdivvie"
+    username: "pdivvie",
     email: "pdivvie@outlook.com",
     first_name: "Pierre",
     last_name: "de Villiers",

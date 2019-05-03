@@ -1,17 +1,19 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :edit, :update, :destroy]
-  before_action :set_business
+  before_action :set_business, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   # GET /ratings
   # GET /ratings.json
   def index
     @ratings = Rating.all
+    authorize @ratings
   end
 
   # GET /ratings/1
   # GET /ratings/1.json
   def show
+    authorize @rating
   end
 
   # GET /ratings/new
@@ -44,6 +46,7 @@ class RatingsController < ApplicationController
   # PATCH/PUT /ratings/1
   # PATCH/PUT /ratings/1.json
   def update
+    authorize @rating
     respond_to do |format|
       if @rating.update(rating_params)
         format.html { redirect_to @business, notice: 'Rating was successfully updated.' }
@@ -58,6 +61,7 @@ class RatingsController < ApplicationController
   # DELETE /ratings/1
   # DELETE /ratings/1.json
   def destroy
+    authorize @rating
     @rating.destroy
     respond_to do |format|
       format.html { redirect_to ratings_url, notice: 'Rating was successfully destroyed.' }
