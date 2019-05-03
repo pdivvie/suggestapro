@@ -22,7 +22,9 @@
               <p><%= User.find(rating.user_id).username %></p>
               <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
               <p><%= rating.comment %></p>
-              <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating),class: "dark-theme" %></p>
+              <% if policy(rating).update? %>
+               <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating),class: "dark-theme" %></p>
+              <% end %>
             </div>
           <% end %>
         <% end %>
