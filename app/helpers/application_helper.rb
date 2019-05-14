@@ -7,6 +7,8 @@ module ApplicationHelper
     else
       (link_to "Create a business page", new_business_path,class: style) +
       " ".html_safe +
+      (link_to "My Reviews", ratings_path,class: style) +
+      " ".html_safe +
       (link_to "Logout", destroy_user_session_path, method: :delete,class: style) 
     end
   end
@@ -20,10 +22,6 @@ module ApplicationHelper
       {
         url: businesses_path,
         title: 'Businesses'
-      },
-      {
-        url: ratings_path,
-        title: 'My Reviews'
       }
     ]
   end
