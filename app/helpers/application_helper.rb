@@ -20,6 +20,10 @@ module ApplicationHelper
       {
         url: businesses_path,
         title: 'Businesses'
+      },
+      {
+        url: ratings_path,
+        title: 'My Reviews'
       }
     ]
   end

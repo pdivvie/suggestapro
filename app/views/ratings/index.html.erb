@@ -17,26 +17,35 @@
     <div class="col-md-3">
       <h2>Rating</h2>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
       <h2>Comment</h2>
+    </div>
+    <div class="col-md-3">
+     <h2>Username</h2>
     </div>
   </div>
 
   <% @ratings.each do |rating| %>
-    <div class="row">
-      <div class="col-md-3">
-        <%= Business.find(rating.business_id).name %>
+    <% if rating.user_id == current_user.id %>
+      <div class="row">
+        <div class="col-md-3">
+          <%= Business.find(rating.business_id).name %>
+        </div>
+        <div class="col-md-3">
+          <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
+        </div>
+        <div class="col-md-3">
+          <%= rating.comment %>
+        </div>
+        <div class="col-md-3">
+          <%= User.find(rating.user_id).username %>
+        </div>
       </div>
-      <div class="col-md-3">
-        <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
-      </div>
-      <div class="col-md-6">
-        <%= rating.comment %>
-      </div>
-    </div>
 
-    <br>
-    
+      <br>
+
+    <% end %>
+
   <% end %>
 </main>
 
