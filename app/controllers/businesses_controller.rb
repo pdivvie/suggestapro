@@ -7,6 +7,11 @@ class BusinessesController < ApplicationController
   def index
     @businesses = Business.all
     authorize @businesses
+
+    if params[:search]
+      @search_term = params[:search]
+      @businesses = @businesses.search_by(@search_term)
+    end
   end
 
   # GET /businesses/1

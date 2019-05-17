@@ -41,4 +41,10 @@ module ApplicationHelper
     "active" if current_page? path
   end
 
+  def search_bar
+    form_for "",url: businesses_path, role: "search", method: :get do
+      text_field_tag :search, @search_term,placeholder: "Search..."
+    end
+  end
+
 end

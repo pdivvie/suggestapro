@@ -3,5 +3,12 @@
     <nav class="nav nav-masthead app-nav">
       <%= nav_helper 'nav-link', 'span' %>
       <%= login_helper "nav-link" %>
+
+      <div class="nav-link">
+        <%= form_for "",url: businesses_path, role: "search", method: :get do %>
+          <%= text_field_tag :search, @search_term,placeholder: "Search..." %>
+        <% end %>
+      </div>
+      
     </nav>
 </header>
