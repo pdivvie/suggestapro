@@ -5,7 +5,7 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.json
   def index
-    @businesses = Business.all
+    @businesses = Business.page(params[:page]).per(5)
     authorize @businesses
 
     if params[:search]
