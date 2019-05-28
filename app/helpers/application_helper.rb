@@ -7,6 +7,8 @@ module ApplicationHelper
     else
       (link_to "Create a business page", new_business_path,class: style) +
       " ".html_safe +
+      (link_to "My Services", my_services_path,class: style) +
+      " ".html_safe +
       (link_to "My Reviews", ratings_path,class: style) +
       " ".html_safe +
       (link_to "Logout", destroy_user_session_path, method: :delete,class: style) 

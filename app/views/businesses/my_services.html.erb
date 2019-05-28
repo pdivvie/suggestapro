@@ -1,0 +1,45 @@
+<main role="main" class="container">
+  <%= @my_services.each do |business| %>
+    <% if business.user_id == current_user.id %>    
+      <div class="row">
+        <div class="col-md-10">
+          <div class="well">
+            <div class="my-3 p-3 dark-theme rounded shadow-sm">       
+              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block dark-theme"><%= business.name %></strong>
+              <%= truncate(business.body, :length => 200) %>
+              </p>       
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="well">
+                <p><a class="btn btn-tertiary dark-theme" href="businesses/<%= business.id %>" role="button">View details &raquo;</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="well"><p><div class="star-rating" data-score="<%= business.ratings.average(:stars)%>"></div></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</main>
+
+<script>
+  $(document).ready(function(e) {  
+    $('.star-rating').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  });
+</script>

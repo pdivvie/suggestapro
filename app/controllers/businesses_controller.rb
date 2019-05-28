@@ -14,6 +14,10 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def my_services
+    @my_services = Business.all
+  end
+
   # GET /businesses/1
   # GET /businesses/1.json
   def show
