@@ -2,6 +2,8 @@ class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   layout "business"
 
+  after_action :verify_policy_scoped, only: :my_services
+
   # GET /businesses
   # GET /businesses.json
   def index
@@ -15,7 +17,7 @@ class BusinessesController < ApplicationController
   end
 
   def my_services
-    @my_services = Business.all
+    @businesses = policy_scope(Business)
   end
 
   # GET /businesses/1
