@@ -10,6 +10,23 @@
             
         </ul>
     </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav mx-auto">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.username %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/my-services">My Services</a>
+                <a class="dropdown-item" href="/ratings">My Reviews</a>
+                <a class="dropdown-item" href="/businesses/new">Create a business page</a>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
  
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
@@ -20,16 +37,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
               </li>
-            <% else %>
-              <li class="nav-item">
-                <a class="nav-link" href="/businesses/new">Create a business page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/my-services">My Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/ratings">My Reviews</a>
-              </li>
+            <% else %>              
               <li class="nav-item">
                 <%= link_to "Logout", destroy_user_session_path, method: :delete,class: 'nav-link' %>
               </li>
@@ -44,6 +52,3 @@
         </ul>
     </div>
 </nav>
-
-      
-      
