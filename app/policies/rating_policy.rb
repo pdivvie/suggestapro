@@ -17,4 +17,15 @@ class RatingPolicy < ApplicationPolicy
   def destroy?
     (rating.user == user) || (user.has_role? :admin)
   end
+
+  def create?
+    user.business_ids.each do |i|
+      if rating.business_id == i
+        return false
+      else
+        return true
+      end
+    end
+  end
+
 end

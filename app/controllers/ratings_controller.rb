@@ -34,6 +34,7 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
     @rating.user_id = current_user.id
     @rating.business_id = @business.id
+    authorize @rating
 
     respond_to do |format|
       if @rating.save
