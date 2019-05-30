@@ -3,6 +3,8 @@ class RatingsController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy, :new, :create]
   before_action :authenticate_user!
 
+  after_action :verify_authorized, except: [:new, :create]
+
   # GET /ratings
   # GET /ratings.json
   def index
@@ -23,6 +25,7 @@ class RatingsController < ApplicationController
 
   # GET /ratings/1/edit
   def edit
+    authorize @rating
   end
 
   # POST /ratings

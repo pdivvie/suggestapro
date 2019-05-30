@@ -24,6 +24,7 @@
               <p><%= rating.comment %></p>
               <% if policy(rating).update? %>
                <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating),class: "dark-theme" %></p>
+               <p><%= link_to 'Delete review', business_rating_path(@business, rating),class: "dark-theme", method: :delete %></p>
               <% end %>
             </div>
           <% end %>
