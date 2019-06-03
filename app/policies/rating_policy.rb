@@ -22,8 +22,6 @@ class RatingPolicy < ApplicationPolicy
     user.business_ids.each do |i|
       if rating.business_id == i
         return false
-      else
-        return true
       end
     end
   end
