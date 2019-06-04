@@ -1,12 +1,12 @@
 <main role="main" class="container">
-  <div class="dark-theme">
+  <div class="light-theme">
     <div class="row">
       <div class="col-md-6">
         <h1><%= @business.name %></h1>
         <p><%= image_tag business_img(@business.main_image.url), width: '600', height: 'auto' %></p>
         <p><div class="star-rating-show" data-score="<%= @avg_rating %>"></div>
           <em><%="#{@ratings.length} reviews" %></em></p>
-          <div class="dark-theme">
+          <div class="light-theme">
             <p><%= @business.body %></p>
           </div>
       </div>
@@ -22,10 +22,6 @@
               <p><%= User.find(rating.user_id).username %></p>
               <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
               <p><%= rating.comment %></p>
-              <% if policy(rating).update? %>
-               <p><%= link_to 'Edit review', edit_business_rating_path(@business, rating),class: "dark-theme" %></p>
-               <p><%= link_to 'Delete review', business_rating_path(@business, rating),class: "dark-theme", method: :delete %></p>
-              <% end %>
             </div>
           <% end %>
         <% end %>
@@ -33,13 +29,13 @@
     </div>
   </div>
   <% if policy(@business).update? %>
-    <%= link_to 'Edit', edit_business_path(@business),class: "dark-theme" %> |
+    <%= link_to 'Edit', edit_business_path(@business),class: "light-theme" %> |
   <% end %>
   <% if policy(@business).destroy? %>
-    <%= link_to 'Delete', @business,class: "dark-theme", method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Delete', @business,class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %> |
   <% end %>
-  <%= link_to 'Back', businesses_path,class: "dark-theme" %> |
-  <%= link_to 'Write a Review', new_business_rating_path(@business),class: "dark-theme" %>
+  <%= link_to 'Back', businesses_path,class: "light-theme" %> |
+  <%= link_to 'Write a Review', new_business_rating_path(@business),class: "light-theme" %>
 </main>
 
  

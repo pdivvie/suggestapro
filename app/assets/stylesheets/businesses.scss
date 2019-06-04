@@ -7,7 +7,7 @@ body {
 }
 
 body {
-  background-color: #212121;
+  background-color: #ffffff;
   padding-top: 56px;
 }
 
@@ -20,14 +20,19 @@ body {
   color: #ffffff;
 }
 
+.light-theme {
+  background-color: #ffffff;
+  color: #212121;
+}
+
 .dark-theme:hover,
 .dark-theme:focus {
   color: #fff;
   background-color: transparent;
 }
 
-.dark-theme-alt {
-  background-color: #2E2E2E;
+.light-theme-nav {
+  background-color: #428bca;
   color: #ffffff;
 }
 
