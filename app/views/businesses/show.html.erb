@@ -15,7 +15,7 @@
       <div class="col-md-5">
         <% if @ratings.blank? %>
           <h3>No reviews yet, would you like to write the first?</h3>
-          <%= link_to 'Write a Review', new_business_rating_path(@business),class: "dark-theme" %> 
+          <%= link_to 'Write a Review', new_business_rating_path(@business),class: "light-theme" %> 
         <% else %>
           <% @ratings.each do |rating| %>
             <div class="reviews">
