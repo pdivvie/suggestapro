@@ -1,5 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :index]
+
   layout "business"
 
   after_action :verify_policy_scoped, only: :my_services
@@ -7,14 +9,12 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.json
   def index
+    
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
-      @businesses = Business.where(category: @category).page(params[:page]).per(5)
-    elsif params.has_key?(:location)
-      @location = Location.find_by_name(params[:location])
-      @businesses = Business.where(location: @location).page(params[:page]).per(5)
+      @businesses = Business.where(location_id: @location, category: @category).page(params[:page]).per(5)
     else
-      @businesses = Business.page(params[:page]).per(5)
+      @businesses = Business.where(location_id: @location).page(params[:page]).per(5)
     end
 
     authorize @businesses
@@ -98,6 +98,10 @@ class BusinessesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_business
       @business = Business.find(params[:id])
+    end
+
+    def set_location
+      @location = Location.find_by_id(params[:location_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
