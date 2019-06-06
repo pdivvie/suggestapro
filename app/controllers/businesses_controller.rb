@@ -10,11 +10,7 @@ class BusinessesController < ApplicationController
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
       @businesses = Business.where(category: @category).page(params[:page]).per(5)
-    else
-      @businesses = Business.page(params[:page]).per(5)
-    end
-
-    if params.has_key?(:location)
+    elsif params.has_key?(:location)
       @location = Location.find_by_name(params[:location])
       @businesses = Business.where(location: @location).page(params[:page]).per(5)
     else
