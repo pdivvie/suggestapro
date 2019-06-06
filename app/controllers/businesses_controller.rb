@@ -14,6 +14,13 @@ class BusinessesController < ApplicationController
       @businesses = Business.page(params[:page]).per(5)
     end
 
+    if params.has_key?(:location)
+      @location = Location.find_by_name(params[:location])
+      @businesses = Business.where(location: @location).page(params[:page]).per(5)
+    else
+      @businesses = Business.page(params[:page]).per(5)
+    end
+
     authorize @businesses
 
     if params[:search]
@@ -99,6 +106,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:name, :body, :main_image, :category_id, :user_id)
+      params.require(:business).permit(:name, :body, :main_image, :category_id, :location_id, :user_id)
     end
 end

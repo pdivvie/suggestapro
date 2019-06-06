@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_143814) do
+ActiveRecord::Schema.define(version: 2019_06_06_143727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,22 @@ ActiveRecord::Schema.define(version: 2019_06_04_143814) do
     t.text "main_image"
     t.bigint "user_id"
     t.bigint "category_id"
+    t.bigint "location_id"
     t.index ["category_id"], name: "index_businesses_on_category_id"
+    t.index ["location_id"], name: "index_businesses_on_location_id"
     t.index ["user_id"], name: "index_businesses_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.boolean "display_in_navbar", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.boolean "display_in_navbar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,6 +88,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_143814) do
   end
 
   add_foreign_key "businesses", "categories"
+  add_foreign_key "businesses", "locations"
   add_foreign_key "businesses", "users"
   add_foreign_key "ratings", "users"
 end
