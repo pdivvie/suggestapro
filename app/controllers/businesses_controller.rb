@@ -7,7 +7,16 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.json
   def index
-    @businesses = Business.page(params[:page]).per(5)
+    if params.has_key?(:category)
+      @category = Category.find_by_name(params[:category])
+      @businesses = Business.where(category: @category).page(params[:page]).per(5)
+    elsif params.has_key?(:location)
+      @location = Location.find_by_name(params[:location])
+      @businesses = Business.where(location: @location).page(params[:page]).per(5)
+    else
+      @businesses = Business.page(params[:page]).per(5)
+    end
+
     authorize @businesses
 
     if params[:search]
@@ -93,6 +102,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:name, :body, :main_image)
+      params.require(:business).permit(:name, :body, :main_image, :category_id, :location_id, :user_id)
     end
 end
