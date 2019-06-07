@@ -6,8 +6,8 @@
 
         <%= render 'form', business: @business %>
 
-        <%= link_to 'Show', @business %> |
-        <%= link_to 'Back', businesses_path %>
+        <%= link_to 'Show', [@location, @business] %> |
+        <%= link_to 'Back', location_businesses_path %>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
-  before_action :set_location, only: [:show, :edit, :update, :destroy, :index]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :index, :create, :new]
 
   layout "business"
 
@@ -13,8 +13,10 @@ class BusinessesController < ApplicationController
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
       @businesses = Business.where(location_id: @location, category: @category).page(params[:page]).per(5)
-    else
+    elsif params.has_key?(:location_id)
       @businesses = Business.where(location_id: @location).page(params[:page]).per(5)
+    else
+      @businesses = Business.all.page(params[:page]).per(5)
     end
 
     authorize @businesses
@@ -26,7 +28,7 @@ class BusinessesController < ApplicationController
   end
 
   def my_services
-    @businesses = policy_scope(Business)
+    @businesses = policy_scope(Business).page(params[:page]).per(5)
   end
 
   # GET /businesses/1
@@ -57,11 +59,12 @@ class BusinessesController < ApplicationController
   # POST /businesses.json
   def create
     @business = Business.new(business_params)
-    @business.user_id = current_user.id if current_user
+    @business.user_id = current_user.id
+    @business.location_id = @location.id
 
     respond_to do |format|
       if @business.save
-        format.html { redirect_to @business, notice: 'Business was successfully created.' }
+        format.html { redirect_to @location, notice: 'Business was successfully created.' }
         format.json { render :show, status: :created, location: @business }
       else
         format.html { render :new }
@@ -76,7 +79,7 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     authorize @business
     if @business.update(business_params)
-      redirect_to @business
+      redirect_to [@location, @business]
     else
       render :edit
     end
@@ -89,7 +92,7 @@ class BusinessesController < ApplicationController
     authorize @business
     @business.destroy
     respond_to do |format|
-      format.html { redirect_to businesses_url, notice: 'Business was successfully deleted.' }
+      format.html { redirect_to location_businesses_url, notice: 'Business was successfully deleted.' }
       format.json { head :no_content }
     end
   end

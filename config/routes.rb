@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'ratings' => 'ratings#index', as: :ratings
+  get 'My-Reviews' => 'ratings#index', as: :ratings
 
-  root to: 'pages#home'
+  root to: 'locations#index'
 end

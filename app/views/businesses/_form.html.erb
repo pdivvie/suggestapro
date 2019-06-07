@@ -1,4 +1,4 @@
-<%= form_with(model: business, local: true) do |form| %>
+<%= form_for ([@location, @business]) do |form| %>
   <% if business.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(business.errors.count, "error") %> prohibited this business from being saved:</h2>
@@ -24,11 +24,6 @@
   <div class="form-group">
     <%= form.label :category %>
     <%= form.select :category_id, Category.all.collect { |cat| [ cat.name, cat.id ] }, include_blank: true, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :location %>
-    <%= form.select :location_id, Location.all.collect { |loc| [ loc.name, loc.id ] }, include_blank: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
