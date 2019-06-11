@@ -4,14 +4,13 @@ Rails.application.routes.draw do
   devise_for :users, path: '', path_names: {sign_in: 'login', sign_up: 'register', sign_out: 'logout'}
 
   get 'my-services', to: 'businesses#my_services'
+  get 'my-reviews', to: 'ratings#my_reviews'
   
   resources :locations do
     resources :businesses do
-      resources :ratings, except: :index
+      resources :ratings
     end
   end
-
-  get 'My-Reviews' => 'ratings#index', as: :ratings
 
   root to: 'locations#index'
 end

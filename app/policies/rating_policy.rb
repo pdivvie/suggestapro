@@ -1,4 +1,10 @@
 class RatingPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      scope.where(user: user)
+    end
+  end
+  
   attr_reader :user, :rating
 
   def initialize(user, rating)

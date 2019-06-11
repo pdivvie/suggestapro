@@ -4,7 +4,7 @@ class BusinessesController < ApplicationController
 
   layout "business"
 
-  after_action :verify_authorized, only: [:index, :show, :create, :edit, :update, :destroy]
+  after_action :verify_authorized, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   after_action :verify_policy_scoped, only: :my_services
 
   # GET /businesses
@@ -108,7 +108,7 @@ class BusinessesController < ApplicationController
     end
 
     def set_location
-      @location = Location.find_by_id(params[:location_id])
+      @location = Location.friendly.find(params[:location_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

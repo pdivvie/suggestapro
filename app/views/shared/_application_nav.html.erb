@@ -59,7 +59,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="/my-services">My Services</a>
-                  <a class="dropdown-item" href="/My-Reviews">My Reviews</a>
+                  <a class="dropdown-item" href="/my-reviews">My Reviews</a>
                   <% if params.has_key?(:location_id) %>
                     <%= link_to 'Create a new business', new_location_business_path(location_id: @location),class: "dropdown-item" %>
                   <% end %>
