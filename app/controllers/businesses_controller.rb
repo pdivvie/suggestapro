@@ -4,7 +4,7 @@ class BusinessesController < ApplicationController
 
   layout "business"
 
-  after_action :verify_authorized, only: [:index, :show, :edit, :update, :destroy]
+  after_action :verify_authorized, only: [:index, :show, :create, :edit, :update, :destroy]
   after_action :verify_policy_scoped, only: :my_services
 
   # GET /businesses
@@ -50,6 +50,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/new
   def new
     @business = Business.new
+    authorize @business
   end
 
   # GET /businesses/1/edit
@@ -63,6 +64,7 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     @business.user_id = current_user.id
     @business.location_id = @location.id
+    authorize @business
 
     respond_to do |format|
       if @business.save
