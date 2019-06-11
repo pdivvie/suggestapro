@@ -4,7 +4,7 @@
   <br>
 
   <% Category.all.each do |cat| %>
-    <%= link_to cat.name, businesses_path(category: cat.name) %>
+    <%= cat.name %>
     <br>
   <% end %>
 
@@ -27,8 +27,12 @@
           <td><%= category.name %></td>
           <td><%= category.display_in_navbar %></td>
           <td><%= link_to 'Show', category %></td>
-          <td><%= link_to 'Edit', edit_category_path(category) %></td>
-          <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if policy(category).update? %>
+            <td><%= link_to 'Edit', edit_category_path(category) %></td>
+          <% end %>
+          <% if policy(category).destroy? %>
+            <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

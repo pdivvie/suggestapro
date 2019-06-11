@@ -7,15 +7,28 @@ class RatingPolicy < ApplicationPolicy
   end
 
   def edit?
-    (rating.user == user) || (user.has_role? :admin)
+    (rating.user == user) || (user.has_role? :admin) ||
+
+    if user.has_role? :area_moderator
+      rating.location_id + 3 == user.roles.last.id
+    end
+
   end
 
   def update?
-    (rating.user == user) || (user.has_role? :admin)
+    (rating.user == user) || (user.has_role? :admin) ||
+
+    if user.has_role? :area_moderator
+      rating.location_id + 3 == user.roles.last.id
+    end
   end
 
   def destroy?
-    (rating.user == user) || (user.has_role? :admin)
+    (rating.user == user) || (user.has_role? :admin) ||
+
+    if user.has_role? :area_moderator
+      rating.location_id + 3 == user.roles.last.id
+    end
   end
 
   def create?
