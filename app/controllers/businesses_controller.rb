@@ -4,6 +4,7 @@ class BusinessesController < ApplicationController
 
   layout "business"
 
+  after_action :verify_authorized, only: [:index, :show, :edit, :update, :destroy]
   after_action :verify_policy_scoped, only: :my_services
 
   # GET /businesses
@@ -53,6 +54,7 @@ class BusinessesController < ApplicationController
 
   # GET /businesses/1/edit
   def edit
+    authorize @business
   end
 
   # POST /businesses

@@ -1,19 +1,15 @@
-<div class="container light-theme">
-  <div class="row">
-    <div class="col-md-6">
-      <h1>Locations | <%= link_to "New Location", new_location_path %></h1>
+<div class="album text-muted">
+  <div class="container">
+    <div class="row">
+      <%= render partial: 'location', collection: @locations %>
+    </div>
 
-      <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-      <% Location.all.each do |loc| %>
-        <%= link_to loc.name, location_businesses_path(location_id: loc) %>
-        <br>
-      <% end %>
-
-      <br>
-      <br>
-      <br>
-      <br>
+    <% if policy(@locations).create? %>
 
       <table>
         <thead>
@@ -44,9 +40,12 @@
       <br>
 
       <%= link_to 'New Location', new_location_path %>
-    </div>
-    <div class="col-md-6">
-    </div>
-    
+
+    <% end %>
+
   </div>
 </div>
+
+
+
+

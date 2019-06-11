@@ -1,0 +1,11 @@
+<div class="col-md-4">
+  <div class="card mb-4 box-shadow">
+    <%= image_tag location_img(location.thumb_image.url), width: 350, height: 200 %>
+    <div class="card-body">
+      <h5 class="card-title"><%= location.name %></h5>
+      <p class="card-text">
+        <span><%= link_to 'Show', location_businesses_path(location_id: location), class: "btn btn-primary" %></span>    
+      </p>
+    </div>
+  </div>
+</div>
