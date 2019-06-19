@@ -67,3 +67,5 @@ gem 'carrierwave-aws', '~> 1.3'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.2'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
+
+ruby "2.5.1"
