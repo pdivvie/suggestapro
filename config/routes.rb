@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   
-  resources :locations
   resources :categories
-  devise_for :users, path: '', path_names: {sign_in: 'login', sign_up: 'register', sign_out: 'logout'}
+  devise_for :users, path: '', path_names: {sign_in: 'login', sign_up: 'register', sign_out: 'logout'}, controllers: { registrations: "registrations"}
 
   get 'my-services', to: 'businesses#my_services'
+  get 'my-reviews', to: 'ratings#my_reviews'
   
-  resources :businesses do
-    resources :ratings, except: :index
+  resources :locations do
+    resources :businesses do
+      resources :ratings
+    end
   end
 
-  get 'ratings' => 'ratings#index', as: :ratings
-
-  root to: 'pages#home'
+  root to: 'locations#index'
 end

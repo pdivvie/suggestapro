@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="well">
-            <p><a class="btn btn-tertiary light-theme" href="businesses/<%= business.id %>" role="button">View details &raquo;</a></p>
+            <%= link_to 'View Details', location_business_path(business.location_id, business.id), class: "btn btn-tertiary light-theme" %>
           </div>
         </div>
       </div>

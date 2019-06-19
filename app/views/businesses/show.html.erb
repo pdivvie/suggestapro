@@ -15,7 +15,7 @@
       <div class="col-md-5">
         <% if @ratings.blank? %>
           <h3>No reviews yet, would you like to write the first?</h3>
-          <%= link_to 'Write a Review', new_business_rating_path(@business),class: "light-theme" %> 
+          <%= link_to 'Write a Review', new_location_business_rating_path(@location, @business),class: "light-theme" %> 
         <% else %>
           <% @ratings.each do |rating| %>
             <div class="reviews">
@@ -29,13 +29,13 @@
     </div>
   </div>
   <% if policy(@business).update? %>
-    <%= link_to 'Edit', edit_business_path(@business),class: "light-theme" %> |
+    <%= link_to 'Edit', edit_location_business_path(@location, @business),class: "light-theme" %> |
   <% end %>
   <% if policy(@business).destroy? %>
-    <%= link_to 'Delete', @business,class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Delete', [@location, @business],class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %> |
   <% end %>
-  <%= link_to 'Back', businesses_path,class: "light-theme" %> |
-  <%= link_to 'Write a Review', new_business_rating_path(@business),class: "light-theme" %>
+  <%= link_to 'Back', location_businesses_path,class: "light-theme" %> |
+  <%= link_to 'Write a Review', new_location_business_rating_path(@location, @business),class: "light-theme" %>
 </main>
 
  

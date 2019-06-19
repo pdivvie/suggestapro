@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :businesses
   has_many :ratings, dependent: :destroy
 
+  belongs_to :location
+
   after_create :assign_default_role
 
   def assign_default_role

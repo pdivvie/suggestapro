@@ -12,12 +12,29 @@ class BusinessPolicy < ApplicationPolicy
     @business = business
   end
 
+  def create?
+    if user.is_a?(GuestUser)
+      false
+    else
+      true
+    end
+  end
+
   def update?
-    (business.user == user) || (user.has_role? :admin)
+    (business.user == user) || (user.has_role? :admin) ||
+
+    if user.has_role? :area_moderator
+      business.location_id + 3 == user.roles.last.id
+    end
   end
 
   def destroy?
-    (business.user == user) || (user.has_role? :admin)
+    (business.user == user) || (user.has_role? :admin) ||
+
+    if user.has_role? :area_moderator
+      business.location_id + 3 == user.roles.last.id
+    end
+
   end
 
 

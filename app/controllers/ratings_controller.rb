@@ -1,15 +1,20 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :edit, :update, :destroy]
   before_action :set_business, only: [:show, :edit, :update, :destroy, :new, :create]
+  before_action :set_location, except: :my_reviews
   before_action :authenticate_user!
 
-  after_action :verify_authorized, except: [:new, :create]
+  after_action :verify_authorized, except: [:new, :create, :my_reviews]
 
   # GET /ratings
   # GET /ratings.json
   def index
     @ratings = Rating.all
     authorize @ratings
+  end
+
+  def my_reviews
+    @ratings = policy_scope(Rating)
   end
 
   # GET /ratings/1
@@ -34,11 +39,13 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
     @rating.user_id = current_user.id
     @rating.business_id = @business.id
+    @rating.location_id = @location.id
+
     authorize @rating
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to @business, notice: 'Rating was successfully created.' }
+        format.html { redirect_to [@location, @business], notice: 'Rating was successfully created.' }
         format.json { render :show, status: :created, location: @rating }
       else
         format.html { render :new }
@@ -53,7 +60,7 @@ class RatingsController < ApplicationController
     authorize @rating
     respond_to do |format|
       if @rating.update(rating_params)
-        format.html { redirect_to @business, notice: 'Rating was successfully updated.' }
+        format.html { redirect_to [@location, @business], notice: 'Rating was successfully updated.' }
         format.json { render :show, status: :ok, location: @rating }
       else
         format.html { render :edit }
@@ -68,7 +75,7 @@ class RatingsController < ApplicationController
     authorize @rating
     @rating.destroy
     respond_to do |format|
-      format.html { redirect_to ratings_url, notice: 'Rating was successfully destroyed.' }
+      format.html { redirect_to [@location, @business], notice: 'Rating was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -83,8 +90,12 @@ class RatingsController < ApplicationController
       @business = Business.find(params[:business_id])
     end
 
+    def set_location
+      @location = Location.friendly.find(params[:location_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def rating_params
-      params.require(:rating).permit(:stars, :business_id, :comment, :user_id)
+      params.require(:rating).permit(:stars, :business_id, :location_id, :comment, :user_id)
     end
 end

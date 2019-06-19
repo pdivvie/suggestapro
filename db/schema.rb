@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_143727) do
+ActiveRecord::Schema.define(version: 2019_06_19_092023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,25 @@ ActiveRecord::Schema.define(version: 2019_06_06_143727) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.boolean "display_in_navbar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "thumb_image"
+    t.string "slug"
+    t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -50,7 +64,9 @@ ActiveRecord::Schema.define(version: 2019_06_06_143727) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.text "comment"
+    t.bigint "location_id"
     t.index ["business_id"], name: "index_ratings_on_business_id"
+    t.index ["location_id"], name: "index_ratings_on_location_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
@@ -75,7 +91,9 @@ ActiveRecord::Schema.define(version: 2019_06_06_143727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.bigint "location_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["location_id"], name: "index_users_on_location_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -90,5 +108,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_143727) do
   add_foreign_key "businesses", "categories"
   add_foreign_key "businesses", "locations"
   add_foreign_key "businesses", "users"
+  add_foreign_key "ratings", "locations"
   add_foreign_key "ratings", "users"
+  add_foreign_key "users", "locations"
 end
