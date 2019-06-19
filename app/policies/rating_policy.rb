@@ -38,11 +38,16 @@ class RatingPolicy < ApplicationPolicy
   end
 
   def create?
-    user.business_ids.each do |i|
-      if rating.business_id == i
-        return false
+    if rating.location_id == user.location_id
+      user.business_ids.each do |i|
+        if !(rating.business_id == i)
+          return false
+        end
       end
+    else
+      return false
     end
+
   end
 
 end
