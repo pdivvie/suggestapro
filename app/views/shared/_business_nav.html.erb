@@ -1,98 +1,91 @@
 <nav class="fixed-top navbar navbar-expand-md light-theme-nav">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul class="navbar-nav mx-auto">
-                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item">
-                          <% if params.has_key?(:location_id) %>
-                            <% Category.all.each do |cat| %>
-                              <%= link_to cat.name, location_businesses_path(location_id: @location.id, category: cat.name) %>
-                              <br>
-                            <% end %>
-                          <% end %>
-                        </a>
-                      </div>
-                    </li>
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+      </li>
+      <% if params.has_key?(:location_id) %>
+        <li class="nav-item">
+          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav mx-auto">
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item">
+                      <% Category.all.each do |cat| %>
+                        <%= link_to cat.name, location_businesses_path(location_id: @location.id, category: cat.name) %>
+                        <br>
+                      <% end %>
+                    </a>
                   </div>
-                </ul>
+                </li>
               </div>
-            </li>
-            <li class="nav-item">
-              <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul class="navbar-nav mx-auto">
-                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item">
-                          <% Location.all.each do |loc| %>
-                            <%= link_to loc.name, location_businesses_path(location_id: loc) %>
-                            <br>
-                          <% end %>
-                        </a>
-                      </div>
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            </li>
-        </ul>
-    </div>
-
-    <% if current_user.is_a?(GuestUser) == false %>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            </ul>
+          </div>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav mx-auto">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= current_user.username %>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="/my-services">My Services</a>
-                  <a class="dropdown-item" href="/my-reviews">My Reviews</a>
-                  <% if params.has_key?(:location_id) %>
-                    <%= link_to 'Create a new business', new_location_business_path(location_id: @location),class: "dropdown-item" %>
-                  <% end %>
+                  <a class="dropdown-item">
+                    <% Location.all.each do |loc| %>
+                      <%= link_to loc.name, location_businesses_path(location_id: loc) %>
+                      <br>
+                    <% end %>
+                  </a>
                 </div>
               </li>
             </div>
           </ul>
         </div>
+      </li>
+    </ul>
+  </div>
+
+  
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <% if current_user.is_a?(GuestUser) == false %>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.username %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/my-services">My Services</a>
+              <a class="dropdown-item" href="/my-reviews">My Reviews</a>
+              <% if params.has_key?(:location_id) %>
+                <%= link_to 'Create a new business', new_location_business_path(location_id: @location),class: "dropdown-item" %>
+              <% end %>
+              <a class><%= link_to "Logout", destroy_user_session_path, method: :delete,class: 'dropdown-item' %></a>
+            </div>
+          </li>
+        </div>
+      <% elsif current_user.is_a?(GuestUser) %>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
       <% end %>
- 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <% if current_user.is_a?(GuestUser) %>
-              <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-            <% else %>              
-              <li class="nav-item">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete,class: 'nav-link' %>
-              </li>
+      <% if params.has_key?(:location_id) %>
+        <li class="nav-item">
+          <div class="nav-link">
+            <%= form_for "",url: location_businesses_path(location_id: @location.id), role: "search", method: :get do %>
+              <%= text_field_tag :search, @search_term,placeholder: "Search..." %>
             <% end %>
-            <% if params.has_key?(:location_id) %>
-              <li class="nav-item">
-                <div class="nav-link">
-                  <%= form_for "",url: location_businesses_path(location_id: @location.id), role: "search", method: :get do %>
-                    <%= text_field_tag :search, @search_term,placeholder: "Search..." %>
-                  <% end %>
-                </div>
-              </li>
-            <% end %>
-        </ul>
-    </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </nav>
