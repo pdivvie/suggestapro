@@ -4,28 +4,6 @@
       <li class="nav-item active">
           <a class="nav-link" href="/">Home</a>
       </li>
-      <% if params.has_key?(:location_id) %>
-        <li class="nav-item">
-          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav mx-auto">
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item">
-                      <% Category.all.each do |cat| %>
-                        <%= link_to cat.name, location_businesses_path(location_id: @location.id, category: cat.name) %>
-                        <br>
-                      <% end %>
-                    </a>
-                  </div>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </li>
-      <% end %>
       <li class="nav-item">
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav mx-auto">
@@ -36,8 +14,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item">
                     <% Location.all.each do |loc| %>
-                      <%= link_to loc.name, location_businesses_path(location_id: loc) %>
-                      <br>
+                      <%= link_to loc.name, location_businesses_path(location_id: loc), class: "dropdown-item" %>
                     <% end %>
                   </a>
                 </div>
