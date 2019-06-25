@@ -12,7 +12,6 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
-    @location = Location.friendly.find(params[:id])
   end
 
   # GET /locations/new
