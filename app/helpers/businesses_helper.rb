@@ -4,7 +4,7 @@ module BusinessesHelper
     if img
       img
     else
-      "http://demo.warptheme.com/images/placeholder_600x400.svg"
+      'https://rating-site-bucket.s3.eu-west-2.amazonaws.com/uploads/business/placeholder/placeholder_600x400.svg'
     end
   end
 end
