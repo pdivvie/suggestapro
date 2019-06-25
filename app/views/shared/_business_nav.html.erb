@@ -64,6 +64,7 @@
               <% if params.has_key?(:location_id) %>
                 <%= link_to 'Create a new business', new_location_business_path(location_id: @location),class: "dropdown-item" %>
               <% end %>
+              <a class><%= link_to "Change your password", edit_user_registration_path,class: 'dropdown-item' %></a>
               <a class><%= link_to "Logout", destroy_user_session_path, method: :delete,class: 'dropdown-item' %></a>
             </div>
           </li>
