@@ -41,7 +41,7 @@ class RatingPolicy < ApplicationPolicy
     if rating.location_id == user.location_id
       user.business_ids.each do |i|
         if !(rating.business_id == i)
-          return false
+          return true
         end
       end
     else
