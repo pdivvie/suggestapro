@@ -1,14 +1,8 @@
 <%= form_for ([@location, @business]) do |form| %>
   <% if business.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(business.errors.count, "error") %> prohibited this business from being saved:</h2>
-
-      <ul>
-      <% business.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <% @business.errors.full_messages.each do |error| %>
+      <%= alert_generator error %>
+    <% end %>
   <% end %>
 
   <div class="form-group">
