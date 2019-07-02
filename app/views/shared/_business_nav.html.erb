@@ -11,7 +11,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item">
-                <% Location.all.each do |loc| %>
+                <% Location.order('name ASC').each do |loc| %>
                   <%= link_to loc.name, location_businesses_path(location_id: loc),class: "dropdown-item" %>
                 <% end %>
               </a>
@@ -28,7 +28,7 @@
               </a>
               <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item">
-                  <% Category.all.each do |cat| %>
+                  <% Category.order('name ASC').each do |cat| %>
                     <%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name),class: "dropdown-item" %>
                   <% end %>
                 </a>
