@@ -13,11 +13,11 @@ class BusinessesController < ApplicationController
     
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
-      @businesses = Business.where(location_id: @location, category: @category).page(params[:page]).per(5)
+      @businesses = Business.where(location_id: @location, category: @category).page(params[:page]).per(5).order('name ASC')
     elsif params.has_key?(:location_id)
-      @businesses = Business.where(location_id: @location).page(params[:page]).per(5)
+      @businesses = Business.where(location_id: @location).page(params[:page]).per(5).order('name ASC')
     else
-      @businesses = Business.all.page(params[:page]).per(5)
+      @businesses = Business.all.page(params[:page]).per(5).order('name ASC')
     end
 
     authorize @businesses
