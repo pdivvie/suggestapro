@@ -5,16 +5,16 @@
       <% end %>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <div id="star-rating"></div>
   </div>
 
-  <div class="field">
-    <%= form.label :comment %><br />
-    <%= form.text_area :comment, autocomplete: "Write your review..." %>
+  <div class="form-group">
+    <%= form.label :comment %>
+    <%= form.text_area :comment, autocomplete: "Write your review...", class: 'form-control' %>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
     <%= form.submit %>
   </div>
 <% end %>
