@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'my-services', to: 'businesses#my_services'
   get 'my-reviews', to: 'ratings#my_reviews'
+  get 'faq', to: 'pages#faq'
   
   resources :locations do
     resources :businesses do
