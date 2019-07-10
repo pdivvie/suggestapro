@@ -1,63 +1,43 @@
 <div class="container light-theme">
 
-  <main role="main" class="container light-theme">
-  
-  <div class="row">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-3">
-      <h1>Reviews</h1>
-    </div>
-    <div class="col-md-6">
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-2">
-      <h2>Business</h2>
-    </div>
-    <div class="col-md-2">
-      <h2>Rating</h2>
-    </div>
-    <div class="col-md-2">
-      <h2>Comment</h2>
-    </div>
-    <div class="col-md-2">
-     <h2>Username</h2>
-    </div>
-  </div>
-
-  <% @ratings.each do |rating| %>
-    <% if rating.user_id == current_user.id %>
-      <div class="row">
-        <div class="col-md-2">
-          <%= Business.find(rating.business_id).name %>
-        </div>
-        <div class="col-md-2">
+ <div class="row">
+  <div class="col-md-12">
+    <h1>Reviews</h1>
+    
+    <% @ratings.each do |rating| %>
+      <% if rating.user_id == current_user.id %>
+      <div class="rounded shadow-sm review-theme">
+        <div class="reviews">
           <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <%= User.find(rating.user_id).username %> / <%= rating.created_at.strftime("%F") %>
+          </p>
+          <p><%= rating.comment %></p>
         </div>
-        <div class="col-md-2">
-          <%= rating.comment %>
-        </div>
-        <div class="col-md-2">
-          <%= User.find(rating.user_id).username %>
-        </div>
+
+        <hr>
+
         <% if policy(rating).update? %>
-          <div class="col-md-2">
-            <%= link_to 'Edit review', edit_location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme" %>
-          </div>
-          <div class="col-md-2">
-            <%= link_to 'Delete review', location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= link_to 'Edit review', edit_location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme" %>
+            </div>
+            <div class="col-md-6">
+              <%= link_to 'Delete review', location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
           </div>
         <% end %>
       </div>
 
-      <br>
+      <hr>
 
+      <% end %>
     <% end %>
 
-  <% end %>
-</main>
+  </div>
+</div>
+
+</div>
 
 <script>
   $(document).ready(function(e) {  
@@ -71,4 +51,4 @@
   });
 </script>
     
-</div>
+

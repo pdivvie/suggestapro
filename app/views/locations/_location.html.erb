@@ -1,6 +1,10 @@
-<div class="col-md-4">
-  <div class="card mb-4 box-shadow">
+<div class="row">
+
+  <div class="col-md-7">
     <%= image_tag location_img(location.thumb_image.url), width: 350, height: 200 %>
+  </div>
+
+  <div class="col-md-5">
     <div class="card-body">
       <h5 class="card-title"><%= location.name %></h5>
       <p class="card-text">
@@ -8,4 +12,9 @@
       </p>
     </div>
   </div>
+
 </div>
+
+<br>
+<hr>
+<br>
