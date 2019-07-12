@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def alert_generator msg
-    js add_gritter(msg)
+    js add_gritter(msg, on_click: remove_gritter )
   end
 
 end
