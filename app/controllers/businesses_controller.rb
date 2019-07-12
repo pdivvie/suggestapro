@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
-  before_action :set_location, only: [:show, :edit, :update, :destroy, :index, :create, :new]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :index, :create, :new, :my_services]
 
   layout "business"
 
@@ -50,6 +50,8 @@ class BusinessesController < ApplicationController
   # GET /businesses/new
   def new
     @business = Business.new
+    @business.user_id = current_user.id
+    @business.location_id = @location.id
     authorize @business
   end
 
@@ -64,6 +66,7 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     @business.user_id = current_user.id
     @business.location_id = @location.id
+
     authorize @business
 
     respond_to do |format|

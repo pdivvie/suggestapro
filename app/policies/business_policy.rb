@@ -15,7 +15,7 @@ class BusinessPolicy < ApplicationPolicy
   def create?
     if user.is_a?(GuestUser)
       false
-    else
+    elsif business.location_id == user.location_id 
       true
     end
   end
