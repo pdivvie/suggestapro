@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def alert_generator msg
-    js add_gritter(msg, on_click: remove_gritter )
+    js add_gritter(msg, on_click: remove_gritter, :nodom_wrap  => true )
   end
 
 end
