@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   rolify
-  has_many :businesses
+  has_many :businesses, dependent: :destroy
   has_many :ratings, dependent: :destroy
 
   belongs_to :location
