@@ -1,30 +1,33 @@
-<div class="row">
-  <div class="col-md-10">
-    <div class="well">
-      <div class="my-3 p-3 light-theme rounded shadow-sm">       
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block light-theme"><%= business.name %></strong>
-        <%= truncate(business.body, :length => 200) %>
-        </p>       
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2">
+<div class="my-3 p-3 rounded shadow">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-10">
         <div class="well">
-          <%= link_to 'View Details', location_business_path(business.location, business.id), class: "btn btn-tertiary light-theme" %>
+          <p class="media-body pb-3 mb-0 small lh-125">
+            
+            <strong class="d-block light-theme"><%= business.name %></strong>
+            <%= truncate(business.body, :length => 200) %>
+                  
+          </p>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="well"><p><div class="star-rating" data-score="<%= business.ratings.average(:stars)%>"></div></p>
+      <div class="col-md-2">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well">
+              <%= link_to 'View Details', location_business_path(business.location, business.id), class: "btn btn-dark" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well"><p><div class="star-rating" data-score="<%= business.ratings.average(:stars)%>"></div></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"></p>
 
 <script>
   $(document).ready(function(e) {  

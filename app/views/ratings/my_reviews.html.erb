@@ -1,44 +1,47 @@
-<div class="container light-theme">
+<div class="col-md-2">
+</div>
 
- <div class="row">
-  <div class="col-md-12">
-    <h1>Reviews</h1>
-    
-    <% @ratings.each do |rating| %>
-      <% if rating.user_id == current_user.id %>
-      <div class="rounded shadow-sm review-theme">
-        <div class="reviews">
-          <h5><%= rating.business.name %></h5>
-          <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <%= User.find(rating.user_id).username %> / <%= rating.created_at.strftime("%F") %> 
-          </p>
-          <p><%= rating.comment %></p>
-        </div>
-
-        <hr>
-
-        <% if policy(rating).update? %>
-          <div class="row">
-            <div class="col-md-6">
-              <%= link_to 'Edit review', edit_location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme" %>
-            </div>
-            <div class="col-md-6">
-              <%= link_to 'Delete review', location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          </div>
-        <% end %>
+<div class="col-md-9">
+  <h1 class="display-4">My Reviews</h1>
+  
+  <% @ratings.each do |rating| %>
+    <% if rating.user_id == current_user.id %>
+    <div class="rounded shadow-sm review-theme">
+      <div class="reviews">
+        <h5><%= rating.business.name %></h5>
+        <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <%= User.find(rating.user_id).username %> / <%= rating.created_at.strftime("%F") %> 
+        </p>
+        <p><%= rating.comment %></p>
       </div>
 
       <hr>
 
+      <% if policy(rating).update? %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= link_to 'Edit review', edit_location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme" %>
+          </div>
+          <div class="col-md-6">
+            <%= link_to 'Delete review', location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
       <% end %>
+    </div>
+
+    <hr>
+
     <% end %>
-
-  </div>
-</div>
+  <% end %>
 
 </div>
+
+<div class="col-md-1">
+</div>
+
+
+
 
 <script>
   $(document).ready(function(e) {  

@@ -13,13 +13,7 @@ body {
 }
 
 .star-rating {
-  padding-left: .75rem;
   white-space: nowrap;
-}
-
-.dark-theme {
-  background-color: #212121;
-  color: #ffffff;
 }
 
 .light-theme {
@@ -27,17 +21,23 @@ body {
   color: #212121;
   text-align: justify;
   text-justify: inter-word;
+  padding-top: 30px;
+}
+
+.bg-light {
+  background-color: #5a9be0 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #f8f9fa;
 }
 
 .review-theme {
   background-color: #eeeeee;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.dark-theme:hover,
-.dark-theme:focus {
-  color: #fff;
-  background-color: transparent;
-}
 
 .light-theme-nav {
   background-color: #428bca;
@@ -45,42 +45,32 @@ body {
 }
 
 /* Nav links */
-.nav-link {
+.navbar-light .navbar-nav .nav-link {
   position: relative;
   padding: 1rem;
   font-weight: 500;
-  color: #cdddeb;
+  color: #f8f9fa;
 }
-.nav-link:hover,
+.navbar-light .navbar-nav .nav-link:hover,
 .nav-link:focus {
   color: #fff;
   background-color: transparent;
 }
 
-/* Active state gets a caret at the bottom */
-.nav-link.active {
-  color: #fff;
-}
-.nav-link.active:after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -.3rem;
-  vertical-align: middle;
-  content: "";
-  border-right: .3rem solid transparent;
-  border-bottom: .3rem solid;
-  border-left: .3rem solid transparent;
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+  color: #f8f9fa;
 }
 
 .business-container {
   padding: 30px;
 }
 
-.container {
+.fluid-container {
   padding-top: 56px;
+}
+
+.navbar > .container {
+  padding-top: 0px;
 }
 
 .scrollable-menu {

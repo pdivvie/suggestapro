@@ -1,10 +1,10 @@
 <nav class="fixed-top navbar navbar-expand-md light-theme-nav">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class><%= link_to "Index", location_businesses_path(location_id: current_user.location_id), class: 'nav-link' %></a>
+      </li>
       <% if params.has_key?(:location_id) %>
-        <li class="nav-item active">
-            <a class><%= link_to "Home", location_businesses_path(location_id: @location), class: 'nav-link' %></a>
-        </li>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
