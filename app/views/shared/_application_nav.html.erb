@@ -1,14 +1,17 @@
-<nav class="fixed-top navbar navbar-expand-md light-theme-nav">
-  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+<nav class="fixed-top navbar navbar-expand-md navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class><%= link_to "Index", location_businesses_path(location_id: current_user.location_id), class: 'nav-link' unless current_user.is_a?(GuestUser) == true %></a>
       </li>
       <% if params.has_key?(:location_id) %>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
-            </a>
+              </a>
             <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item">
                 <% Category.order('name ASC').each do |cat| %>
@@ -23,11 +26,11 @@
     </ul>
   </div>
 
-  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav ml-auto">
       <% if current_user.is_a?(GuestUser) == false %>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= current_user.username %>
@@ -46,9 +49,8 @@
           </li>
           <% if current_user.has_role? :admin %>
             <li class="nav-item">
-              <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+              <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mx-auto">   
-                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Tools
                       </a>
@@ -68,7 +70,6 @@
                         <a class="dropdown-item" href="/faq">F.A.Q.</a>
                       </div>
                     </li>
-                  </div>
                 </ul>
               </div>
             </li>
