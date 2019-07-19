@@ -2,7 +2,7 @@
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class><%= link_to "Index", location_businesses_path(location_id: current_user.location_id), class: 'nav-link' %></a>
+        <a class><%= link_to "Index", location_businesses_path(location_id: current_user.location_id), class: 'nav-link' unless current_user.is_a?(GuestUser) == true %></a>
       </li>
       <% if params.has_key?(:location_id) %>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
