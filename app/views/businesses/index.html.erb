@@ -1,15 +1,7 @@
-<div class="col-md-2">
-</div>
+<h1 class="text-muted"><%= @location.name %>
+  <small class="text-muted"><%= @category.name unless @category == nil %></small>
+</h1>
 
-<div class="col-md-9">
-  <h1 class="display-4"><%= @location.name %>
-    <small class="text-muted"><%= @category.name unless @category == nil %></small>
-  </h1>
+<%= render @businesses %>
 
-  <%= render @businesses %>
-
-  <%= paginate @businesses %>
-</div>
-
-<div class="col-md-1">
-</div>
+<%= paginate @businesses %>

@@ -17,8 +17,18 @@
 
     <div class="fluid-container light-theme">
       <div class="row">
-        
-        <%= yield %>
+        <div class="col-md-3">
+          <div class="offset-sm-1 app-sidebar">
+            <%= render "shared/business_sidebar" %>
+          </div>    
+        </div>
+
+        <div class="col-md-8">
+          <%= yield %>
+        </div>
+
+        <div class="col-md-1">
+        </div>
 
       </div>
 

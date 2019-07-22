@@ -1,14 +1,12 @@
-<div class="container">
-  <div class="login">
-    <div class="card">
-      <div class="card-body">
-        <h1>Editing Business</h1>
+<div class="login">
+  <div class="card">
+    <div class="card-body">
+      <h1>Editing Business</h1>
 
-        <%= render 'form', business: @business %>
+      <%= render 'form', business: @business %>
 
-        <%= link_to 'Show', [@location, @business] %> |
-        <%= link_to 'Back', location_businesses_path %>
-      </div>
+      <%= link_to 'Show', [@location, @business] %> |
+      <%= link_to 'Back', location_businesses_path %>
     </div>
   </div>
 </div>

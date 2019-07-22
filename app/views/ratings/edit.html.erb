@@ -1,14 +1,13 @@
-<div class="container">
-  <div class="login">
-    <div class="card">
-      <div class="card-body">
-        <h1>Edit Review</h1>
+<div class="login">
+  <div class="card">
+    <div class="card-body">
+      <h1>Edit Review</h1>
 
-        <%= render 'form', rating: @rating %>
+      <%= render 'form', rating: @rating %>
 
-        <%= link_to 'Back', my_reviews_path %>
-      </div>
+      <%= link_to 'Back', location_my_reviews_path(location_id: @location) %>
     </div>
   </div>
 </div>
+
 

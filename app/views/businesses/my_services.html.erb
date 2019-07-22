@@ -1,12 +1,5 @@
-<div class="col-md-2">
-</div>
+<h1 class="text-muted">My Services</h1>
+<%= render @businesses %>
 
-<div class="col-md-9">
-  <h1 class="display-4">My Services</h1>
-  <%= render @businesses %>
+<%= paginate @businesses %>
 
-  <%= paginate @businesses %>
-</div>
-
-<div class="col-md-1">
-</div>
