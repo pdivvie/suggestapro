@@ -6,13 +6,11 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
+    <%= form.text_field :name, placeholder: "Title of your service...", class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :body %>
-    <%= form.text_area :body, class: 'form-control' %>
+    <%= form.text_area :body, rows: 12, placeholder: "Describe your service here...", class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -21,8 +19,7 @@
   </div>
 
   <div class="form-group">
-    <%= form.label "Link to Website" %>
-    <%= form.text_area :link, class: 'form-control' %>
+    <%= form.text_area :link, rows: 1, placeholder: 'Link to Website', class: 'form-control' %>
   </div>
 
   <div class="form-group">

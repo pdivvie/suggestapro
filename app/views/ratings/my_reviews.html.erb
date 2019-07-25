@@ -1,4 +1,4 @@
-<h1 class="text-muted">My Reviews</h1>
+<h1 class="text-muted">My Suggestions</h1>
 
 <% @ratings.each do |rating| %>
   <% if rating.user_id == current_user.id %>
@@ -17,10 +17,10 @@
     <% if policy(rating).update? %>
       <div class="row">
         <div class="col-md-6">
-          <%= link_to 'Edit review', edit_location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme" %>
+          <%= link_to 'Edit Suggestion', edit_location_business_rating_path(rating.location_id, rating.business_id, rating),class: "btn btn-danger" %>
         </div>
         <div class="col-md-6">
-          <%= link_to 'Delete review', location_business_rating_path(rating.location_id, rating.business_id, rating),class: "light-theme", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Remove Suggestion', location_business_rating_path(rating.location_id, rating.business_id, rating),class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     <% end %>
