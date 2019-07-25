@@ -19,8 +19,10 @@
       <em><%="#{@ratings.length} reviews" %></em></p>
       <div class="light-theme">
         <p><%= @business.body %></p>
-        <hr>
-        <p><%= link_to @business.link, @business.link, class: "light-theme" %></p>
+        <% unless @business.link == nil %>
+          <hr>
+          <p><%= link_to @business.link, @business.link, class: "light-theme" %></p>
+        <% end %>
       </div>
   </div>
 </div>
