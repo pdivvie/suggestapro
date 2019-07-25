@@ -28,7 +28,7 @@
     <h1>Reviews</h1>
     <% if @ratings.blank? %>
       <h3>No reviews yet, would you like to write the first?</h3>
-      <%= link_to 'Suggest A Pro', new_location_business_rating_path(@location, @business),class: "light-theme" %> 
+      <%= link_to 'Suggest A Pro', new_location_business_rating_path(@location, @business), class: "btn btn-primary" %> 
     <% else %>
       <% @ratings.each do |rating| %>
       <div class="rounded shadow-sm review-theme">
