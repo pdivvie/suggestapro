@@ -1,31 +1,22 @@
-<% if policy(@categories).new? %>
-  <h1>Categories | <%= link_to "New Category", new_category_path %></h1>
-<% end %>
+<h1 class="text-muted">Categories</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Display in navbar</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.display_in_navbar %></td>
-        <% if policy(@categories).update? %>
-          <td><%= link_to 'Edit', edit_category_path(category) %></td>
-          <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @categories.each do |category| %>
+    <div class="col-md-4">
+      <%= link_to category.name, location_businesses_path(location_id: @location, category: category.name), class: "text-muted" %>
+      <% if policy(@categories).update? %>
+        <%= category.display_in_navbar %>
+        <%= link_to 'Edit', edit_location_category_path(@location, category) %>
+        <%= link_to 'Destroy', location_category_path(@location, category), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
 
 <br>
+
 <% if policy(@categories).new? %>
-  <%= link_to 'New Category', new_category_path %>
+  <%= link_to 'New Category', new_location_category_path %>
 <% end %>
