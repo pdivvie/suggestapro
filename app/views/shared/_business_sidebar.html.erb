@@ -16,6 +16,10 @@
     <small class="text-muted"><%= link_to "Show all", location_businesses_path(location_id: @location), class: "text-muted" %></small>
   </h4>
 
+  <%= form_for "", url: categories_path, role: "search", method: :get do %>
+    <%= text_field_tag :search, @search_term_cat, placeholder: "Search categories...", class: "form-control" %>
+  <% end %>
+
   <% Category.order('name ASC').each do |cat| %>
     <p><%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: 'text-muted' %></p>
   <% end %>

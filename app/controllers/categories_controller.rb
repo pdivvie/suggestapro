@@ -8,6 +8,11 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.order('name ASC')
     authorize @categories
+
+    if params[:search]
+      @search_term_cat = params[:search]
+      @categories = @categories.search_by(@search_term_cat)
+    end
   end
 
   # GET /categories/1
@@ -64,7 +69,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     authorize @category
-    
+
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }

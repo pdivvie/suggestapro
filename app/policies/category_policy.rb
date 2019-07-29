@@ -7,7 +7,7 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def index?
-    user.has_role? :admin
+    true
   end
 
   def edit?
