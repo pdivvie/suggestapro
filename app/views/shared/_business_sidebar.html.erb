@@ -15,7 +15,7 @@
   <h4>Categories</h4>
 
   <% Category.order('name ASC').each do |cat| %>
-    <%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: 'nav-link-bus' %>
+    <p><%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: 'nav-link-bus' %></p>
   <% end %>
 
 </div>
