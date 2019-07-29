@@ -7,7 +7,15 @@
 
 <div class="sidebar-module">
   <h4>Locations</h4>
-  
-    <%= link_to "www.bestell.co.za", 'https://pdv-stell-frontend.herokuapp.com', class: 'nav-link-bus' %> (stellenbosch)
-  
+
+  <%= link_to "www.bestell.co.za", 'https://pdv-stell-frontend.herokuapp.com', class: 'nav-link-bus' %> (stellenbosch)
+
+  <hr>
+
+  <h4>Categories</h4>
+
+  <% Category.order('name ASC').each do |cat| %>
+    <%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: 'nav-link-bus' %>
+  <% end %>
+
 </div>
