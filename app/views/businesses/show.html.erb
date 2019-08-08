@@ -14,27 +14,40 @@
       <br>
       <br>
       <% end %>
-
     </div>
-    <p><%= image_tag business_img(@business.main_image.url), width: '600', height: 'auto' %></p>
-    <p><div class="star-rating-show" data-score="<%= @avg_rating %>"></div>
-      <em><%="#{@ratings.length} locals suggested #{@business.name}" %></em></p>
-      <div class="light-theme">
-        <p><%= @business.body %></p>
-        <% unless @business.link == nil %>
-          <hr>
-          <p><%= link_to @business.link, @business.link, class: "light-theme" %></p>
-        <% end %>
-      </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag business_img(@business.main_image.url), width: '100%', height: 'auto' %>
+  </div>
+  <div class="col-md-6">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="star-rating-show" data-score="<%= @avg_rating %>"></div>
+    <em><%="#{@ratings.length} locals suggested #{@business.name}" %></em>
+    <div class="light-theme">
+      <p><%= @business.body %></p>
+      <% unless @business.link == nil %>
+        <hr>
+        <p><%= link_to @business.link, @business.link, class: "light-theme" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <hr>
+
 <div class="row">
   <div class="col-md-12">
     <h1>Suggestions</h1>
     <% if @ratings.blank? %>
       <h3>No suggestions yet, would you like to make the first?</h3>
-      <%= link_to 'Suggest A Pro', new_location_business_rating_path(@location, @business), class: "btn btn-primary" %> 
+      <%= link_to 'Suggest A Pro', new_location_business_rating_path(@location, @business), class: "btn btn-primary" %>
     <% else %>
       <% @ratings.each do |rating| %>
       <div class="rounded shadow-sm review-theme">
@@ -54,7 +67,7 @@
 
 
 <script>
-  $(document).ready(function(e) {  
+  $(document).ready(function(e) {
     $('.star-rating-show').raty({
       readOnly: true,
       score: function() {
