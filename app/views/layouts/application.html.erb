@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    
+
     <%= render "shared/application_nav" %>
 
     <div class="fluid-container light-theme">
@@ -21,15 +21,20 @@
         <div class="col-md-3">
           <div class="offset-sm-1 app-sidebar d-none d-md-block">
             <%= render "shared/application_sidebar" %>
-          </div>    
+          </div>
         </div>
 
         <div class="col-md-8">
           <%= yield %>
         </div>
+
         <div class="col-md-1">
         </div>
 
+      </div>
+
+      <div class="row">
+        <%= render "shared/application_footer" %>
       </div>
 
       <%= alerts %>
