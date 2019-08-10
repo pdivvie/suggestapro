@@ -20,11 +20,13 @@
               </a>
             </div>
           </li>
-        </div>   
-      <% end %> 
-         
+        </div>
+      <% end %>
+
     </ul>
   </div>
+
+  <div><%= image_tag 'brand/SuggestaproLogo.png', width: '200px', height: 'auto' %></div>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav ml-auto">
@@ -40,7 +42,7 @@
                 <% if params.has_key?(:location_id) %>
                 <a class><%= link_to "My Services", location_my_services_path(location_id: @location), class: 'dropdown-item' %></a>
                 <a class><%= link_to "My Suggestions", location_my_reviews_path(location_id: @location), class: 'dropdown-item' %></a>
-              
+
                 <%= link_to 'Create a new business', new_location_business_path(location_id: @location),class: "dropdown-item" %>
               <% end %>
               <a class><%= link_to "Change your password", edit_user_registration_path,class: 'dropdown-item' %></a>
@@ -50,7 +52,7 @@
           <% if current_user.has_role? :admin %>
             <li class="nav-item">
               <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mx-auto">   
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Tools
                       </a>
