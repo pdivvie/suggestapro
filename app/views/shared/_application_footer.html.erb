@@ -1,16 +1,15 @@
-<div class="col-md-5">
-  <div class="footer">
-    <%= link_to "Terms and Conditions", terms_and_conditions_path, class: "text-muted" %>
+<footer class="py-1 bg-dark fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <p class="m-0 text-center text-white"><%= link_to "Terms and Conditions", terms_and_conditions_path, class: 'text-white' %></p>
+      </div>
+      <div class="col-md-4">
+        <p class="m-0 text-center text-white">Copyright &copy; suggestapro.com 2019</p>
+      </div>
+      <div class="col-md-4">
+        <p class="m-0 text-center text-white"><%= link_to "Privacy Policy", privacy_policy_path, class: 'text-white' %></p>
+      </div>
+    </div>
   </div>
-</div>
-<div class="col-md-2">
-  <div class="footer">
-    <div class="text-muted">© 2018 Copyright suggestapro.com</div>
-  </div>
-</div>
-
-<div class="col-md-5">
-  <div class="footer">
-    <%= link_to "Privacy Policy", privacy_policy_path, class: "text-muted" %>
-  </div>
-</div>
+</footer>
