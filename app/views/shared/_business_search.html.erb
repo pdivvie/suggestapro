@@ -1,0 +1,9 @@
+<% if params.has_key?(:location_id) %>
+  <li class="nav-item">
+    <div class="nav-link">
+      <%= form_for "",url: location_businesses_path(location_id: @location.id), role: "search", method: :get do %>
+        <%= text_field_tag :search, @search_term,placeholder: "Search...", class: "form-control" %>
+      <% end %>
+    </div>
+  </li>
+<% end %>

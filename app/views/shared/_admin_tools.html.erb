@@ -1,0 +1,22 @@
+<% if current_user.has_role? :admin %>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Tools
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item"><h5>Locations</h5></a>
+          <a class="dropdown-item">
+            <% Location.order('name ASC').each do |loc| %>
+              <%= link_to loc.name, location_businesses_path(location_id: loc.id), class: "dropdown-item" %>
+            <% end %>
+          </a>
+          <hr>
+          <a class="dropdown-item" href="/">Locations</a>
+          <a class="dropdown-item" href="/categories">Categories</a>
+          <a class="dropdown-item" href="/faq">F.A.Q.</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+<% end %>

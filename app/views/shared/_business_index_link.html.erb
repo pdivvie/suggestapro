@@ -1,0 +1,3 @@
+<li class="nav-item">
+  <%= link_to "Index", location_businesses_path(location_id: current_user.location_id), class: 'nav-link' unless current_user.is_a?(GuestUser) == true %>
+</li>
