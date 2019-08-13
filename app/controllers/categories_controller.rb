@@ -4,8 +4,6 @@ class CategoriesController < ApplicationController
 
   after_action :verify_authorized
 
-  layout "business"
-
   # GET /categories
   # GET /categories.json
   def index
