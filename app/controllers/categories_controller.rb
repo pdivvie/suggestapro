@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   after_action :verify_authorized
 
-  layout "category"
+  layout "business"
 
   # GET /categories
   # GET /categories.json
