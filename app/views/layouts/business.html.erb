@@ -20,10 +20,8 @@
     <div class="fluid-container light-theme">
       <div class="row">
         <div class="col-md-3">
-          <div class="hidden-md-up">
-            <div class="offset-sm-1 app-sidebar d-none d-md-block">
-              <%= render "shared/application_sidebar" %>
-            </div>
+          <div class="offset-sm-1 app-sidebar d-none d-md-block">
+            <%= render "shared/application_sidebar" %>
           </div>
         </div>
 
@@ -33,12 +31,9 @@
 
         <div class="col-md-1">
         </div>
-
       </div>
 
-      <div class="row">
-        <%= render "shared/application_footer" %>
-      </div>
+      <%= render "shared/application_footer" %>
 
       <%= alerts %>
     </div>
