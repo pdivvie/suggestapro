@@ -13,28 +13,41 @@ body {
   padding-top: 56px;
 }
 
- /* Nav links */
-.nav-link {
+.star-rating {
+  white-space: nowrap;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #212121;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.light-theme-nav {
+  background-color: #428bca;
+  color: #ffffff;
+}
+
+.bg-light {
+  background-color: #5a9be0 !important;
+}
+
+.review-theme {
+  background-color: #eeeeee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Nav Links */
+.navbar-light .navbar-nav .nav-link {
   position: relative;
   padding: 1rem;
   font-weight: 500;
-  color: #cdddeb;
+  color: #f8f9fa;
 }
 
-.nav-link-home {
-  position: relative;
-  font-weight: 500;
-  color: black;
-}
-
-.nav-link-home:hover,
-.nav-link:focus {
-  color: black;
-  background-color: transparent;
-}
-
-
-.nav-link:hover,
+.navbar-light .navbar-nav .nav-link:hover,
 .nav-link:focus {
   color: #fff;
   background-color: transparent;
@@ -43,57 +56,28 @@ body {
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: #f8f9fa;
 }
-
-/* Active state gets a caret at the bottom */
-.nav-link.active {
-  color: #fff;
-}
-.nav-link.active:after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -.3rem;
-  vertical-align: middle;
-  content: "";
-  border-right: .3rem solid transparent;
-  border-bottom: .3rem solid;
-  border-left: .3rem solid transparent;
-}
-
-.light-theme-nav {
-  background-color: #428bca;
-  color: #ffffff;
-}
-
-.light-theme {
-  background-color: #ffffff;
-  color: #212121;
-}
-
-.bg-light {
-  background-color: #5a9be0 !important;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: #f8f9fa;
-}
-
-.review-theme {
-  background-color: #eeeeee;
-}
+/* End of Nav Links */
 
 .auth-links a {
   color: black;
- }
+}
 
 .fluid-container {
   padding-top: 56px;
 }
 
+.navbar > .container {
+  padding-top: 0px;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
 .gritter-item-wrapper {
-  margin: 68px -4px -145px -5px;;
+  margin: 68px -4px -145px -5px;
 }
 
 /* Sidebar modules for boxing content */

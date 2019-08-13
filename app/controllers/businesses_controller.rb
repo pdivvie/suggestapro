@@ -2,15 +2,13 @@ class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   before_action :set_location, only: [:show, :edit, :update, :destroy, :index, :create, :new, :my_services]
 
-  layout "business"
-
   after_action :verify_authorized, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   after_action :verify_policy_scoped, only: :my_services
 
   # GET /businesses
   # GET /businesses.json
   def index
-    
+
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
       @businesses = Business.where(location_id: @location, category: @category).page(params[:page]).per(5).order('name ASC')
