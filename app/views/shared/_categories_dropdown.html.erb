@@ -3,11 +3,9 @@
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
     </a>
     <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item">
-        <% Category.order('name ASC').each do |cat| %>
-          <%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: "dropdown-item" %>
-        <% end %>
-      </a>
+      <% Category.order('name ASC').each do |cat| %>
+        <%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: "dropdown-item" %>
+      <% end %>
     </div>
   </li>
 <% end %>
