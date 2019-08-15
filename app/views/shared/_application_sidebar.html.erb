@@ -1,27 +1,34 @@
 <% if current_user.is_a?(GuestUser) %>
   <div class="sidebar-module sidebar-module-inset">
-    <h4>About</h4>
-    <p>Log in to be redirected to your area or select your area from the list below to continue.</p>
+    <div class="card card-sidebar text-white">
+      <h4>About</h4>
+      <p>Log in to be redirected to your area or select your area from the list below to continue.</p>
+    </div>
   </div>
 <% end %>
 
-<div class="sidebar-module">
-  <h4 class="text-muted">Locations</h4>
+<% if params.has_key?(:location_id) %>
+  <div class="sidebar-module sidebar-module-inset">
+    <div class="card card-sidebar text-white">
+      <h4>Categories
+        <small class><%= link_to "Show all", location_businesses_path(location_id: @location), class: "text-white" %></small>
+      </h4>
+      <br>
+      <%= render 'shared/category_search' %>
+      <br>
+      <% Category.order('name ASC').each do |cat| %>
+        <p><%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: 'text-white' %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
-  <%= link_to "www.bestell.co.za", 'https://pdv-stell-frontend.herokuapp.com', class: 'text-muted' %> (stellenbosch)
+<div class="sidebar-module sidebar-module-inset">
+  <div class="card card-sidebar text-white">
+    <h4>Locations</h4>
 
-  <% if params.has_key?(:location_id) %>
-  <hr>
-    <h4 class="text-muted">Categories
-      <small class="text-muted"><%= link_to "Show all", location_businesses_path(location_id: @location), class: "text-muted" %></small>
-    </h4>
-    <br>
-    <%= render 'shared/category_search' %>
-    <br>
-    <% Category.order('name ASC').each do |cat| %>
-      <p><%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: 'text-muted' %></p>
-    <% end %>
-  <% end %>
+    <%= link_to "www.bestell.co.za - stellenbosch", 'https://pdv-stell-frontend.herokuapp.com', class: 'text-white' %>
+  </div>
 </div>
 
 

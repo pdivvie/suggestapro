@@ -20,7 +20,7 @@
     <div class="fluid-container light-theme">
       <div class="row">
         <div class="col-md-3">
-          <div class="offset-sm-1 app-sidebar d-none d-md-block">
+          <div class="offset-sm-1 app-sidebar d-none d-lg-block">
             <%= render "shared/application_sidebar" %>
           </div>
         </div>
@@ -31,6 +31,10 @@
 
         <div class="col-md-1">
         </div>
+      </div>
+
+      <div class="offset-sm-1 app-sidebar d-block d-lg-none">
+        <%= render "shared/application_sidebar" %>
       </div>
 
       <%= render "shared/application_footer" %>
