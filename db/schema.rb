@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_25_122957) do
+ActiveRecord::Schema.define(version: 2019_08_16_141955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,14 @@ ActiveRecord::Schema.define(version: 2019_07_25_122957) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "subcategories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -116,5 +124,6 @@ ActiveRecord::Schema.define(version: 2019_07_25_122957) do
   add_foreign_key "businesses", "users"
   add_foreign_key "ratings", "locations"
   add_foreign_key "ratings", "users"
+  add_foreign_key "subcategories", "categories"
   add_foreign_key "users", "locations"
 end
