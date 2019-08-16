@@ -16,8 +16,29 @@
       <br>
       <%= render 'shared/category_search' %>
       <br>
-      <% Category.order('name ASC').each do |cat| %>
-        <p><%= link_to cat.name, location_businesses_path(location_id: @location, category: cat.name), class: 'text-white' %></p>
+      <% Category.order('name ASC').each do |category| %>
+        <button
+          class="btn btn-light"
+          type="button"
+          data-toggle="collapse"
+          data-target="<%= "#category#{category.id}" %>"
+          aria-expanded="false"
+          aria-controller="<%= "category#{category.id}" %>"
+        >
+          <%= category.name %>
+        </button>
+
+        <div class="collapse" id="<%= "category#{category.id}" %>">
+          <div class="card card-sidebar">
+            <p>
+              <% Subcategory.order('title ASC').each do |subcategory|  %>
+                <% if subcategory.category_id == category.id %>
+                  <p><%= link_to subcategory.title, location_businesses_path(location_id: @location, category: subcategory.title), class: 'text-white' %></p>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -30,5 +51,11 @@
     <%= link_to "www.bestell.co.za - stellenbosch", 'https://pdv-stell-frontend.herokuapp.com', class: 'text-white' %>
   </div>
 </div>
+
+
+
+
+
+
 
 
