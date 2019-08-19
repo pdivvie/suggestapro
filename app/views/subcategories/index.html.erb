@@ -1,0 +1,21 @@
+<h1 class="text-muted">Subcategories</h1>
+
+<div class="row">
+
+  <% @subcategories.each do |subcategory| %>
+    <div class="col-md-4">
+      <%= link_to subcategory.title, location_businesses_path(location_id: @location, subcategory: subcategory.title), class: "text-muted" %>
+      <% if policy(@subcategories).update? %>
+        <%= link_to 'Edit', edit_location_subcategory_path(@location, subcategory) %>
+        <%= link_to 'Destroy', location_subcategory_path(@location, subcategory), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+<br>
+
+<% if policy(@subcategories).new? %>
+  <%= link_to 'New Category', new_location_subcategory_path %>
+<% end %>

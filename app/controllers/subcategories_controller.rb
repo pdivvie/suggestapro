@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
   before_action :set_location
 
@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @subcategories = Subcategory.order('name ASC')
+    @subcategories = Subcategory.order('title ASC')
     authorize @subcategories
 
     if params[:search]

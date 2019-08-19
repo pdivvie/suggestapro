@@ -14,7 +14,7 @@
         <small class><%= link_to "Show all", location_businesses_path(location_id: @location), class: "text-white" %></small>
       </h4>
       <br>
-      <%= render 'shared/category_search' %>
+      <%= render 'shared/subcategory_search' %>
       <br>
       <% Category.order('name ASC').each do |category| %>
         <button

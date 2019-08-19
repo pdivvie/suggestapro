@@ -3,6 +3,6 @@ class Subcategory < ApplicationRecord
   has_many :businesses
 
   def self.search_by(search_term_subcategory)
-    where("LOWER(name) LIKE :search_term_subcategory", search_term_subcategory: "%#{search_term_subcategory.downcase}%")
+    where("LOWER(title) LIKE :search_term_subcategory", search_term_subcategory: "%#{search_term_subcategory.downcase}%")
   end
 end
