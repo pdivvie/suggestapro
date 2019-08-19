@@ -1,5 +1,5 @@
 <% if params.has_key?(:location_id) %>
-  <%= form_for "", url: location_categories_path, role: "search", method: :get do %>
-    <%= text_field_tag :search, @search_term_cat, placeholder: "Search categories...", class: "form-control" %>
+  <%= form_for "", url: location_subcategories_path, role: "search", method: :get do %>
+    <%= text_field_tag :search, @search_term_subcategory, placeholder: "Search subcategories...", class: "form-control" %>
   <% end %>
 <% end %>

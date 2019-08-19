@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'my-reviews', to: 'ratings#my_reviews'
 
     resources :categories
+    resources :subcategories
     resources :businesses do
       resources :ratings
     end

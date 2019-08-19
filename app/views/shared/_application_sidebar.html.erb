@@ -33,7 +33,7 @@
             <p>
               <% Subcategory.order('title ASC').each do |subcategory|  %>
                 <% if subcategory.category_id == category.id %>
-                  <p><%= link_to subcategory.title, location_businesses_path(location_id: @location, category: subcategory.title), class: 'text-white' %></p>
+                  <p><%= link_to subcategory.title, location_businesses_path(location_id: @location, subcategory: subcategory.title), class: 'text-white' %></p>
                 <% end %>
               <% end %>
             </p>

@@ -9,9 +9,9 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
 
-    if params.has_key?(:category)
-      @category = Category.find_by_name(params[:category])
-      @businesses = Business.where(location_id: @location, category: @category).page(params[:page]).per(5).order('name ASC')
+    if params.has_key?(:subcategory)
+      @subcategory = Subcategory.find_by_title(params[:subcategory])
+      @businesses = Business.where(location_id: @location, subcategory: @subcategory).page(params[:page]).per(5).order('name ASC')
     elsif params.has_key?(:location_id)
       @businesses = Business.where(location_id: @location).page(params[:page]).per(5).order('name ASC')
     else
@@ -114,6 +114,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:name, :body, :main_image, :category_id, :location_id, :user_id, :link)
+      params.require(:business).permit(:name, :body, :main_image, :category_id, :subcategory_id, :location_id, :user_id, :link)
     end
 end

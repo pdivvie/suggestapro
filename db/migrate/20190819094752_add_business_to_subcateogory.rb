@@ -1,0 +1,5 @@
+class AddBusinessToSubcateogory < ActiveRecord::Migration[5.2]
+  def change
+    add_reference :businesses, :subcategory, foreign_key: true
+  end
+end
