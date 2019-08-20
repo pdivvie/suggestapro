@@ -6,7 +6,6 @@
     <div class="col-md-4">
       <%= link_to category.name, location_businesses_path(location_id: @location, category: category.name), class: "text-muted" %>
       <% if policy(@categories).update? %>
-        <%= category.display_in_navbar %>
         <%= link_to 'Edit', edit_location_category_path(@location, category) %>
         <%= link_to 'Destroy', location_category_path(@location, category), method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>

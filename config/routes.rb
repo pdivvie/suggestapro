@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
-
   devise_for :users, path: '', path_names: {sign_in: 'login', sign_up: 'register', sign_out: 'logout'}, controllers: { registrations: "registrations"}
 
-
-
-  get 'faq', to: 'pages#faq'
   get 'terms-and-conditions', to: 'pages#terms_and_conditions'
   get 'privacy-policy', to: 'pages#privacy_policy'
 
