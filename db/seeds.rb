@@ -9,8 +9,7 @@
 
 1.times do
   Location.create!(
-    name: "Somerset West",
-    display_in_navbar: 1
+    name: "Somerset West"
   )
 end
 

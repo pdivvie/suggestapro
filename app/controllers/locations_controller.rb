@@ -73,6 +73,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :display_in_navbar, :thumb_image)
+      params.require(:location).permit(:name, :thumb_image)
     end
 end
