@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     get 'my-services', to: 'businesses#my_services'
     get 'my-reviews', to: 'ratings#my_reviews'
 
-    resources :categories
-    resources :subcategories
+    resources :categories, except: [:show]
+    resources :subcategories, except: [:show]
     resources :businesses do
       resources :ratings
     end

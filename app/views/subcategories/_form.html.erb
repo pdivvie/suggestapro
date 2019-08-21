@@ -1,0 +1,21 @@
+<%= form_for ([@location, @subcategory]) do |form| %>
+  <% if subcategory.errors.any? %>
+    <% @subcategory.errors.full_messages.each do |error| %>
+      <%= alert_generator error %>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category_id, Category.all.collect { |category| [ category.name, category.id ] }, include_blank: true, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

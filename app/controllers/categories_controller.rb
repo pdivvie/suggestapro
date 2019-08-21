@@ -9,11 +9,6 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.order('name ASC')
     authorize @categories
-
-    if params[:search]
-      @search_term_cat = params[:search]
-      @categories = @categories.search_by(@search_term_cat)
-    end
   end
 
   # GET /categories/1
@@ -42,10 +37,8 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to [@location, @category], notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,10 +51,8 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to [@location, @category], notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -74,7 +65,6 @@ class CategoriesController < ApplicationController
     @category.destroy
     respond_to do |format|
       format.html { redirect_to location_categories_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

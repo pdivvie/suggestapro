@@ -70,10 +70,8 @@ class BusinessesController < ApplicationController
     respond_to do |format|
       if @business.save
         format.html { redirect_to [@location, @business], notice: 'Business was successfully created.' }
-        format.json { render :show, status: :created, location: @business }
       else
         format.html { render :new }
-        format.json { render json: @business.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -98,7 +96,6 @@ class BusinessesController < ApplicationController
     @business.destroy
     respond_to do |format|
       format.html { redirect_to location_businesses_url, notice: 'Business was successfully deleted.' }
-      format.json { head :no_content }
     end
   end
 
@@ -114,6 +111,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:name, :body, :main_image, :category_id, :subcategory_id, :location_id, :user_id, :link)
+      params.require(:business).permit(:name, :body, :main_image, :subcategory_id, :location_id, :user_id, :link)
     end
 end

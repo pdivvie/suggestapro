@@ -4,8 +4,6 @@ class SubcategoriesController < ApplicationController
 
   after_action :verify_authorized
 
-  # GET /categories
-  # GET /categories.json
   def index
     @subcategories = Subcategory.order('title ASC')
     authorize @subcategories
@@ -16,9 +14,51 @@ class SubcategoriesController < ApplicationController
     end
   end
 
+  def new
+    @subcategory = Subcategory.new
+    authorize @subcategory
+  end
+
+  def edit
+    authorize @subcategory
+  end
+
+  def create
+    @subcategory = Subcategory.new(subcategory_params)
+    authorize @subcategory
+
+    respond_to do |format|
+      if @subcategory.save
+        format.html { redirect_to location_subcategories_url, notice: 'Subcategory was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
+  def update
+    authorize @subcategory
+
+    respond_to do |format|
+      if @subcategory.update(subcategory_params)
+        format.html { redirect_to location_subcategories_url, notice: 'Subcategory was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
+  def destroy
+    authorize @subcategory
+
+    @subcategory.destroy
+    respond_to do |format|
+      format.html { redirect_to location_subcategories_url, notice: 'Subcategory was successfully destroyed.' }
+    end
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
+    def set_subcategory
       @subcategory = Subcategory.find(params[:id])
     end
 
@@ -26,8 +66,7 @@ class SubcategoriesController < ApplicationController
       @location = Location.friendly.find(params[:location_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def category_params
+    def subcategory_params
       params.require(:subcategory).permit(:title, :category_id)
     end
 end

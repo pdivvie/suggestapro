@@ -15,6 +15,9 @@
           <% if @location != nil%>
             <%= link_to 'Categories', location_categories_path(location_id: @location.id), class: "dropdown-item" unless @location.id == nil %>
           <% end %>
+          <% if @location != nil%>
+            <%= link_to 'Subcategories', location_subcategories_path(location_id: @location.id), class: "dropdown-item" unless @location.id == nil %>
+          <% end %>
         </div>
       </li>
     </ul>
