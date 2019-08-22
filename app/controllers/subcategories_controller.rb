@@ -11,6 +11,9 @@ class SubcategoriesController < ApplicationController
     if params[:search]
       @search_term_subcategory = params[:search]
       @subcategories = @subcategories.search_by(@search_term_subcategory)
+    elsif params.has_key?(:category_id)
+      @category = Category.find_by_id(params[:category_id])
+      @subcategories = Subcategory.where(category_id: @category).order('title ASC')
     end
   end
 
