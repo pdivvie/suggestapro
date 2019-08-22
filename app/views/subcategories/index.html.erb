@@ -4,11 +4,13 @@
 
   <% @subcategories.each do |subcategory| %>
     <div class="col-md-4">
-      <%= link_to subcategory.title, location_businesses_path(location_id: @location, subcategory: subcategory.title), class: "text-muted" %>
-      <% if policy(@subcategories).update? %>
-        <%= link_to 'Edit', edit_location_subcategory_path(@location, subcategory) %>
-        <%= link_to 'Destroy', location_subcategory_path(@location, subcategory), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+      <div class="card card-sidebar text-white">
+        <%= link_to subcategory.title, location_businesses_path(location_id: @location, subcategory: subcategory.title), class: "text-white text-center" %>
+        <% if policy(@subcategories).update? %>
+          <%= link_to 'Edit', edit_location_subcategory_path(@location, subcategory) %>
+          <%= link_to 'Destroy', location_subcategory_path(@location, subcategory), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
