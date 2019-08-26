@@ -1,40 +1,24 @@
-<div class="album text-muted">
-  <div class="container">
+<h1 class="text-muted">Locations</h1>
 
-    <% if policy(@locations).create? %>
+<% if policy(@locations).new? %>
+  <%= link_to 'New Location', new_location_path, class: "btn btn-primary" %>
+<% end %>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+<div class="row">
 
-        <tbody>
-          <% @locations.each do |location| %>
-            <tr>
-              <td><%= location.name %></td>
-              <td><%= link_to 'Show', location %></td>
-              <td><%= link_to 'Index', location_businesses_path(location) %></td>
-              <% if policy(location).update? %>
-                <td><%= link_to 'Edit', edit_location_path(location) %></td>
-              <% end %>
-              <% if policy(location).destroy? %>
-                <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <% @locations.each do |location| %>
+    <div class="col-md-4">
+      <div class="card card-sidebar text-white">
+        <h3><%= location.name %></h3>
+        <%= link_to 'Index', location_businesses_path(location), class: "text-white" %>
+        <% if policy(@locations).update? %>
+          <%= link_to 'Edit', edit_location_path(location), class: "text-white" %>
+          <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-white" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-      <br>
-
-      <%= link_to 'New Location', new_location_path %>
-
-    <% end %>
-
-  </div>
 </div>
 
 
