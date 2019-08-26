@@ -5,12 +5,11 @@
     <% end %>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.text_field :name, placeholder: "Name...", class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "Create Category", class: "btn btn-primary" %>
   </div>
 <% end %>

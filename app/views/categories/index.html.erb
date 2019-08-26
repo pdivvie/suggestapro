@@ -1,21 +1,21 @@
 <h1 class="text-muted">Categories</h1>
 
+<% if policy(@categories).new? %>
+  <%= link_to 'New Category', new_location_category_path, class: "btn btn-primary" %>
+<% end %>
+
 <div class="row">
 
   <% @categories.each do |category| %>
     <div class="col-md-4">
-      <%= link_to category.name, location_businesses_path(location_id: @location, category: category.name), class: "text-muted" %>
-      <% if policy(@categories).update? %>
-        <%= link_to 'Edit', edit_location_category_path(@location, category) %>
-        <%= link_to 'Destroy', location_category_path(@location, category), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+      <div class="card card-sidebar text-white">
+        <%= link_to category.name, location_businesses_path(location_id: @location, category: category.name), class: "text-white text-center" %>
+        <% if policy(@categories).update? %>
+          <%= link_to 'Edit', edit_location_category_path(@location, category), class: "text-white" %>
+          <%= link_to 'Delete', location_category_path(@location, category), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-white" %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
 </div>
-
-<br>
-
-<% if policy(@categories).new? %>
-  <%= link_to 'New Category', new_location_category_path %>
-<% end %>
