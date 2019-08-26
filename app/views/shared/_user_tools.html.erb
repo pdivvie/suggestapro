@@ -10,7 +10,7 @@
           <%= link_to "My Suggestions", location_my_reviews_path(location_id: @location), class: 'dropdown-item' %>
           <%= link_to 'Create a new business', new_location_business_path(location_id: @location), class: "dropdown-item" %>
         <% end %>
-        <%= link_to "Change your password", edit_user_registration_path, class: 'dropdown-item' %>
+        <%= link_to "Edit your profile", edit_user_registration_path, class: 'dropdown-item' %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
       </div>
     </li>
