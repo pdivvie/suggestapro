@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'legal-disclaimers', to: 'pages#legal_disclaimers'
   get 'about', to: 'pages#about'
+  get 'faq', to: 'pages#faq'
+  get 'contact', to: 'pages#contact'
 
   resources :locations do
     get 'my-services', to: 'businesses#my_services'
