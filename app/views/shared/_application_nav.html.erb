@@ -1,10 +1,13 @@
 <nav class="fixed-top navbar navbar-expand-md navbar-light bg-light">
+
+  <a class="navbar-brand"><%= image_tag 'brand/SuggestaproLogo.png', width: '200px', height: 'auto' %></a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
       <%= render 'shared/business_index_link' %>
 
       <%= render 'shared/categories_dropdown' %>
@@ -12,15 +15,7 @@
       <li class="nav-item">
         <%= link_to 'About', about_path, class: 'nav-link' %>
       </li>
-    </ul>
-  </div>
 
-  <ul class="navbar-nav m-auto">
-    <div><%= image_tag 'brand/SuggestaproLogo.png', width: '200px', height: 'auto' %></div>
-  </ul>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav ml-auto">
       <%= render 'shared/user_tools' %>
 
       <%= render 'shared/admin_tools' %>
@@ -28,7 +23,6 @@
       <div class="nav-link">
         <%= render 'shared/subcategory_search' %>
       </div>
-
     </ul>
   </div>
 
