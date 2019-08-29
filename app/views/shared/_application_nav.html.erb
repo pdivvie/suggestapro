@@ -8,11 +8,15 @@
       <%= render 'shared/business_index_link' %>
 
       <%= render 'shared/categories_dropdown' %>
+
+      <li class="nav-item">
+        <%= link_to 'About', about_path, class: 'nav-link' %>
+      </li>
     </ul>
   </div>
 
   <ul class="navbar-nav m-auto">
-    <div><%= image_tag 'brand/SuggestaproLogo.png', width: '250px', height: 'auto' %></div>
+    <div><%= image_tag 'brand/SuggestaproLogo.png', width: '200px', height: 'auto' %></div>
   </ul>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">

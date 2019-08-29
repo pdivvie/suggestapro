@@ -1,12 +1,3 @@
-<% if current_user.is_a?(GuestUser) %>
-  <div class="sidebar-module sidebar-module-inset">
-    <div class="card card-sidebar text-white">
-      <h4>About</h4>
-      <p>Log in to be redirected to your area or select your area from the list below to continue.</p>
-    </div>
-  </div>
-<% end %>
-
 <% if params.has_key?(:location_id) %>
   <div class="sidebar-module sidebar-module-inset">
     <div class="card card-sidebar text-white">
@@ -47,7 +38,7 @@
 <div class="sidebar-module sidebar-module-inset">
   <div class="card card-sidebar text-white">
     <h4>Locations</h4>
-
+    <%= link_to "Somerset West", location_categories_path(location_id: 1), class: 'text-white' %>
     <%= link_to "Stellenbosch", location_categories_path(location_id: 2), class: 'text-white' %>
   </div>
 </div>
