@@ -1,9 +1,7 @@
 <% if params.has_key?(:location_id) %>
   <div class="sidebar-module sidebar-module-inset">
     <div class="card card-sidebar text-white">
-      <h4>Categories
-        <small class><%= link_to "Show all", location_businesses_path(location_id: @location), class: "text-white" %></small>
-      </h4>
+      <h4>Categories</h4>
       <br>
       <%= render 'shared/subcategory_search' %>
       <br>

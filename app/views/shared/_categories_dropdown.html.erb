@@ -3,6 +3,8 @@
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
     </a>
     <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
+      <h5><%= link_to "Show All", location_categories_path(location_id: current_user.location_id), class: 'dropdown-item' %></h5>
+      <hr>
       <% Category.order('name ASC').each do |cat| %>
         <%= link_to cat.name, location_subcategories_path(location_id: @location, category_id: cat.id), class: "dropdown-item" %>
       <% end %>
