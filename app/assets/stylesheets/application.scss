@@ -11,7 +11,6 @@ body {
   background-color: #ffffff;
   color: black;
   padding-top: 56px;
-  padding-bottom: 56px;
 }
 
 .star-rating {
@@ -28,6 +27,10 @@ body {
 .light-theme-nav {
   background-color: #428bca;
   color: #ffffff;
+}
+
+.navbar {
+  height: 70px;
 }
 
 .bg-light {
@@ -97,12 +100,6 @@ body {
   margin-bottom: 0;
 }
 
-.footer {
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px
-}
-
 .card-block {
   margin: 5px 0px 5px 0px;
   padding: 0px 10px 0px 10px;
@@ -116,4 +113,21 @@ body {
 
 .btn-light {
   margin-bottom: 3px;
+}
+
+#page-container {
+  position: relative;
+  min-height: 94vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+#footer {
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 1.5rem;
 }
