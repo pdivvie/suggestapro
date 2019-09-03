@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(resource)
-    "/locations/#{current_user.location_id}/businesses"
+    "/locations/#{current_user.location_id}/categories"
   end
 
   def user_not_authorized
