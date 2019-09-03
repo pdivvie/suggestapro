@@ -1,25 +1,21 @@
 <% if current_user.has_role? :admin %>
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Tools
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to 'Locations', locations_path, class: "h5 dropdown-item" %>
-          <a class="dropdown-item">
-            <% Location.order('name ASC').each do |loc| %>
-              <%= link_to loc.name, location_businesses_path(location_id: loc.id), class: "dropdown-item" %>
-            <% end %>
-          </a>
-          <hr>
-          <% if @location != nil%>
-            <%= link_to 'Categories', location_categories_path(location_id: @location.id), class: "dropdown-item" unless @location.id == nil %>
-          <% end %>
-          <% if @location != nil%>
-            <%= link_to 'Subcategories', location_subcategories_path(location_id: @location.id), class: "dropdown-item" unless @location.id == nil %>
-          <% end %>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Tools
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <%= link_to 'Locations', locations_path, class: "h5 dropdown-item" %>
+      <a class="dropdown-item">
+        <% Location.order('name ASC').each do |loc| %>
+          <%= link_to loc.name, location_businesses_path(location_id: loc.id), class: "dropdown-item" %>
+        <% end %>
+      </a>
+      <hr>
+      <% if @location != nil%>
+        <%= link_to 'Categories', location_categories_path(location_id: @location.id), class: "dropdown-item" unless @location.id == nil %>
+      <% end %>
+      <% if @location != nil%>
+        <%= link_to 'Subcategories', location_subcategories_path(location_id: @location.id), class: "dropdown-item" unless @location.id == nil %>
+      <% end %>
+    </div>
+  </li>
 <% end %>
