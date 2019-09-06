@@ -30,7 +30,7 @@
   <div class="col-md-12">
     <div class="star-rating-show" data-score="<%= @avg_rating %>"></div>
     <em><%="#{@ratings.length} locals suggested #{@business.name}" %></em>
-    <div class="light-theme">
+    <div class="light-theme body">
       <p><%= markdown @business.body %></p>
       <% unless @business.link == nil %>
         <hr>
