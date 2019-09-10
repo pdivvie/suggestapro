@@ -76,6 +76,7 @@ class CategoriesController < ApplicationController
 
     def set_location
       @location = Location.friendly.find(params[:location_id])
+      redirect_to action: action_name, location_id: @location.friendly_id, status: 301 unless @location.friendly_id == params[:location_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
