@@ -36,8 +36,9 @@
 <div class="sidebar-module sidebar-module-inset">
   <div class="card card-sidebar text-white">
     <h4>Locations</h4>
-    <%= link_to "Somerset West", location_categories_path(location_id: 1), class: 'text-white' %>
-    <%= link_to "Stellenbosch", location_categories_path(location_id: 2), class: 'text-white' %>
+    <% Location.order('name ASC').each do |location|  %>
+      <%= link_to location.name, location_categories_path(location_id: location.id), class: 'text-white' %>
+    <% end %>
   </div>
 </div>
 

@@ -1,9 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-2">
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @location.name %>
-</p>
+  <div class="col-md-8">
+    <div class="card card-location">
+      <h1><%= @location.name %> residents reviewed services!</h1>
+      <h3>What this site is about:</h3>
+      <p>The site is for the purposes of <%= @location.name %> residents mainly to recommended services and suppliers to fellow residents.
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+      Anybody who lives in <%= @location.name %> can add suppliers on the list of suppliers.
+
+      Any resident of <%= @location.name %> can review listed suppliers. They can also edit their reviews. Reviews are accompanied by star ratings.
+
+      In this way, one can easily find suppliers who have delivered good service to other residents.
+
+      This process will help to root out "fly by night" suppliers and reward excellent service in the area.
+
+      Any honest, ethical, legal services may be listed. This includes a wide range of services like making clothes, pet care, house sitting, financial advice, computer programming, tools rental, carpentry, welding, wedding photography, dentistry, extra classes, electrical work, glazing, garden services and any other service that residents want to list.
+
+      If the category that you want to add does not exist, please email the webmaster at the address below to add it.
+
+      Any irregularities that are noticed should please also be communicated so that they may be eliminated.
+
+      </p>
+
+      <%= link_to 'Proceed to the next page to add, search or review services', 'http://www.suggestapro.in/locations/stellenbosch/categories', class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+  </div>
+</div>
