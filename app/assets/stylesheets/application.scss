@@ -66,9 +66,12 @@ body {
   color: black;
 }
 
-.fluid-container {
-  padding-top: 56px;
+@media only screen and (min-width: 700px) {
+  .fluid-container {
+    padding-top: 56px;
+  }
 }
+
 
 .navbar > .container {
   padding-top: 0px;
