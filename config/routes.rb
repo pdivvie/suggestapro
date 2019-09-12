@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'faq', to: 'pages#faq'
   get 'contact', to: 'pages#contact'
 
-  resources :locations do
+  resources :locations, path: "" do
     get 'my-services', to: 'businesses#my_services'
     get 'my-reviews', to: 'ratings#my_reviews'
 
@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
+
+
 end
