@@ -6,6 +6,9 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   # GET /categories.json
+
+  layout 'category'
+  
   def index
     @categories = Category.order('name ASC')
     authorize @categories

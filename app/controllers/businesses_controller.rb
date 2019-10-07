@@ -7,6 +7,9 @@ class BusinessesController < ApplicationController
 
   # GET /businesses
   # GET /businesses.json
+
+  layout 'business'
+  
   def index
 
     if params.has_key?(:subcategory)
