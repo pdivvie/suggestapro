@@ -1,0 +1,36 @@
+<% if params.has_key?(:location_id) %>
+  <div class="sidebar-module sidebar-module-inset">
+    <div class="card card-sidebar text-white">
+      <h4>Categories</h4>
+      <br>
+      <%= render 'shared/business_search' %>
+      <br>
+      <%= render 'shared/subcategory_search' %>
+      <br>
+      <% Category.order('name ASC').each do |category| %>
+        <button
+          class="btn btn-light"
+          type="button"
+          data-toggle="collapse"
+          data-target="<%= "#category#{category.id}" %>"
+          aria-expanded="false"
+          aria-controller="<%= "category#{category.id}" %>"
+        >
+          <%= category.name %>
+        </button>
+
+        <div class="collapse" id="<%= "category#{category.id}" %>">
+          <div class="card card-sidebar">
+            <p>
+              <% Subcategory.order('title ASC').each do |subcategory|  %>
+                <% if subcategory.category_id == category.id %>
+                  <p><%= link_to subcategory.title, location_businesses_path(location_id: @location, subcategory: subcategory.title), class: 'text-white' %></p>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

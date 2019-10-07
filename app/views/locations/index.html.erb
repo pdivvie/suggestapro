@@ -1,25 +1,4 @@
-<h1 class="text-muted">Locations</h1>
-
-<% if policy(@locations).new? %>
-  <%= link_to 'New Location', new_location_path, class: "btn btn-primary" %>
-<% end %>
-
-<div class="row">
-
-  <% @locations.each do |location| %>
-    <div class="col-md-4">
-      <div class="card card-sidebar text-white">
-        <h3><%= link_to location.name, location_path(location), class: "text-white" %></h3>
-        <%= link_to 'Index', location_businesses_path(location), class: "text-white" %>
-        <% if policy(@locations).update? %>
-          <%= link_to 'Edit', edit_location_path(location), class: "text-white" %>
-          <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-white" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-
-</div>
+<%= render 'shared/location_sidebar' %>
 
 
 

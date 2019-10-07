@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="h-100">
   <head>
     <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
@@ -13,43 +13,32 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="icon" href="icons/SuggestaproIcon.png" sizes="32x32" />
-    <link rel="icon" href="icons/SuggestaproIcon.png" sizes="192x192" />
-    <link rel="apple-touch-icon-precomposed" href="icons/SuggestaproIcon.png" />
-    <meta name="msapplication-TileImage" content="icons/SuggestaproIcon.png" />
-
   </head>
 
-  <body>
-    <%= render "shared/application_nav" %>
-    <div id="page-container">
-      <div id="content-wrap">
+  <body class="d-flex flex-column h-100">
+    <header>
+      <%= render "shared/application_nav" %>
+    </header>
 
-        <div class="fluid-container light-theme">
+    <main role="main" class="flex-shrink-0">
+      <div class="container">
+        <div class="light-theme">
+
           <div class="row">
-            <div class="col-lg-3">
-              <div class="offset-sm-1 app-sidebar d-none d-lg-block">
-                <%= render "shared/application_sidebar" %>
-              </div>
-            </div>
-
-            <div class="col-lg-8">
+            <div class="col-lg-12">
               <%= yield %>
             </div>
-
-            <div class="col-lg-1">
-            </div>
           </div>
-
-          <div class="offset-sm-1 app-sidebar d-block d-lg-none">
-            <%= render "shared/application_sidebar" %>
-          </div>
+          
         </div>
-
       </div>
 
-      <footer id="footer">
-        <%= render "shared/application_footer" %>
+    </main>
+
+      <footer class="footer mt-auto py-3">
+        <div class="container">
+          <%= render "shared/application_footer" %>
+        </div>
       </footer>
 
       <%= alerts %>

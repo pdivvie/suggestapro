@@ -1,0 +1,8 @@
+<div class="sidebar-module sidebar-module-inset">
+  <div class="card card-sidebar text-white">
+    <h4>Locations</h4>
+    <% Location.order('name ASC').each do |location|  %>
+      <%= link_to location.name, location_categories_path(location_id: location.id), class: 'text-white' %>
+    <% end %>
+  </div>
+</div>

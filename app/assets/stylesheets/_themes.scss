@@ -1,0 +1,13 @@
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+  background-color: #ffffff;
+  color: black;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #212121;
+  text-align: left-aligned;
+}
