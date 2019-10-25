@@ -54,7 +54,7 @@
         <div class="reviews">
           <div class="star-rating-show" data-score="<%= rating.stars %>"></div>
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <%= User.find(rating.user_id).username %> / <%= rating.created_at.strftime("%F") %>
+            <%= User.find(rating.user_id).first_name + " " + User.find(rating.user_id).last_name %> / <%= rating.created_at.strftime("%F") %>
           </p>
           <p><%= rating.comment %></p>
         </div>

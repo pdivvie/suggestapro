@@ -7,7 +7,7 @@ Rails.application.initialize!
 ActionMailer::Base.smtp_settings = {
   user_name: 'pdivvie',
   password: Rails.application.credentials.production[:sendgrid][:password],
-  domain: 'https://pdv-rating-site.herokuapp.com',
+  domain: 'http://suggestapro.in',
   address: 'smtp.sendgrid.net',
   port: 587,
   authentication: :plain,
