@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     "/about"
   end
 
+  def after_update_path_for(resource)
+    "/#{current_user.location_id}/categories"
+  end
+
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
