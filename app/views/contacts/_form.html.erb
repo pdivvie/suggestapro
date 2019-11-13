@@ -1,0 +1,28 @@
+<%= form_for ([@location, @contact]) do |form| %>
+  <% if contact.errors.any? %>
+    <% @contact.errors.full_messages.each do |error| %>
+      <%= alert_generator error %>
+    <% end %>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.text_field :contact_name, placeholder: "Contact Name", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :contact_email, placeholder: "Contact Email", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :contact_number, placeholder: "Contact Number", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location %>
+    <%= form.select :location_id, Location.all.collect { |location| [ location.name, location.id ] }, include_blank: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Create Contact", class: 'btn btn-primary' %>
+  </div>
+<% end %>

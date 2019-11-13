@@ -1,6 +1,7 @@
 class Location < ApplicationRecord
   has_many :businesses
   has_many :ratings
+  has_many :contacts
   has_many :users
 
   extend FriendlyId

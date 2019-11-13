@@ -1,0 +1,16 @@
+<div class="sidebar-module sidebar-module-inset">
+  <div class="card card-sidebar text-white">
+    <h4>Contacts</h4>
+    <p>
+      <% @contacts.each do |contact| %>
+        <p>
+          Name: <%= contact.contact_name %><br>
+          Email: <%= link_to contact.contact_email, contact.contact_email %><br>
+          Contact Number: <%= contact.contact_number %>
+        </p>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<%= render 'shared/location_sidebar' %>

@@ -17,9 +17,11 @@
         <%= link_to 'FAQ', faq_path, class: 'nav-link' %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to 'Contact', contact_path, class: 'nav-link' %>
-      </li>
+      <% if params.has_key?(:location_id) %>
+        <li class="nav-item">
+          <%= link_to 'Contact', location_contacts_path(@location), class: 'nav-link' %>
+        </li>
+      <% end %>
 
       <%= render 'shared/user_tools' %>
 
