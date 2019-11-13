@@ -6,7 +6,9 @@
         <p>
           Name: <%= contact.contact_name %><br>
           Email: <%= link_to contact.contact_email, contact.contact_email %><br>
-          Contact Number: <%= contact.contact_number %>
+          <% if contact.contact_number != nil%>
+            Contact Number: <%= contact.contact_number %>
+          <% end %>
         </p>
       <% end %>
     </p>
