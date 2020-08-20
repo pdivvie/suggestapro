@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: rating_site_development
-  username: postgres
+  username: pdivvie
   password: <%= Rails.application.credentials.development[:postgresql][:password] %>
   host: localhost
 
@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   database: rating_site_test
-  username: postgres
+  username: pdivvie
   password: <%= Rails.application.credentials.development[:postgresql][:password] %>
   host: localhost
 
